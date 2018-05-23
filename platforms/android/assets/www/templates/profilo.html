@@ -1,0 +1,84 @@
+<ion-view view-title="Profilo" cache-view="false">
+  <style>
+
+
+
+  .buttonsBar{
+      display:flex;
+      justify-content:space-around;
+      margin:10px;
+      border-radius:40px;
+      background-color:rgba(60,113,249,0.4);
+      height: 40px;
+  }
+
+  .barButton{
+    height: 100%;
+    display:inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 55px;
+    font-size: 4vw;
+    color:black;
+    border-radius:45px;
+    width: 33%;
+    background-color:rgba(60,113,249,0);
+    z-index: 1;
+    padding: 0 8px;
+    min-width: initial;
+    min-height: 31px;
+    font-weight: 400;
+    line-height: 32px;
+    border-color: transparent;
+  }
+
+  .selezionato {
+    background-color:rgba(60,113,249,1);
+    color:white;
+  }
+
+
+
+  </style>
+
+  <ion-content >
+    <div class="positive-bg" style="padding-bottom:10px;padding-top:10px;text-align:center;">
+        <h3 style="color:white">Il tuo saldo è: <h3>
+        <h2 style="color:white">{{utente.saldo | currency}}<h2>
+    </div>
+
+    <div>
+    <div class="buttonsBar">
+      <button class="barButton " ng-click="selezionaPeriodo(1)" ng-class="{'selezionato': tabAttivo == 1}">Mese</button>
+      <button class="barButton " ng-click="selezionaPeriodo(2)" ng-class="{'selezionato': tabAttivo == 2}">Settimana</button>
+      <button class="barButton " ng-click="selezionaPeriodo(3)" style="float:right" ng-class="{'selezionato': tabAttivo == 3}">Giorno</button>
+    </div>
+  </div>
+  <div>
+    <!-- <div class="card" ng-repeat="item in statistiche" style="display: inline-block;white-space: nowrap;overflow: hidden;"> -->
+    <div class="card" ng-repeat="item in statisticheMovimenti">
+  <div class="item item-divider">
+    {{item.nome}}
+  </div>
+  <div class="item item-text-wrap">
+    {{item.importo | currency}}
+  </div>
+  </div>
+</div>
+
+
+    <div class="card">
+      <div class="item item-divider" ng-if="tabAttivo==1">Andamento Entrate/Uscite Mensile</div>
+      <div class="item item-divider" ng-if="tabAttivo==2">Andamento Entrate/Uscite Settimanale</div>
+      <div class="item item-divider" ng-if="tabAttivo==3">Andamento Entrate/Uscite Giornaliero</div>
+    <div class="item" id="movimenti_chart_div" style="width: 90%; height: 20%;"></div>
+  </div>
+
+  <div class="card">
+    <div class="item item-divider" ng-if="tabAttivo==1">Spese per categoria Mensile</div>
+    <div class="item item-divider" ng-if="tabAttivo==2">Spese per categoria Settimanale</div>
+    <div class="item item-divider" ng-if="tabAttivo==3">Spese per categoria Giornaliero</div>
+  <div class="item" id="categorie_chart_div" style="width: 90%; height: 20%;"></div>
+</div>
+  </ion-content>
+</ion-view>
