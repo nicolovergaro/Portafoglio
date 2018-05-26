@@ -37,23 +37,48 @@
     color:white;
   }
 
+  #addButton{
+    background-color: #FFEB3B;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+
+
+  }
+
 
 
   </style>
 
   <ion-content >
     <div class="positive-bg" style="padding-bottom:10px;padding-top:10px;text-align:center;">
-        <h3 style="color:white">Il tuo saldo è: <h3>
+      <h3 style="color:white">Il tuo saldo è: <h3>
         <h2 style="color:white">{{utente.saldo | currency}}<h2>
+          <button class="fa fa-plus" id="addButton"></button>
+
+      <!-- <table style="margin: 0 auto">
+        <tr>
+          <td colspan="2">
+            <h3 style="color:white">Il tuo saldo è: <h3>
+          </td>
+        </tr>
+        <tr>
+          <td><h2 style="color:white">{{utente.saldo | currency}}<h2></td>
+            <td rowspan="2" style="width:50%"><button class="fa fa-plus" id="addButton"></button></td>
+        </tr>
+      </table> -->
     </div>
 
     <div>
     <div class="buttonsBar">
-      <button class="barButton " ng-click="selezionaPeriodo(1)" ng-class="{'selezionato': tabAttivo == 1}">Mese</button>
+      <button class="barButton " ng-click="selezionaPeriodo(1)" ng-class="{'selezionato': tabAttivo == 1}">Giorno</button>
       <button class="barButton " ng-click="selezionaPeriodo(2)" ng-class="{'selezionato': tabAttivo == 2}">Settimana</button>
-      <button class="barButton " ng-click="selezionaPeriodo(3)" style="float:right" ng-class="{'selezionato': tabAttivo == 3}">Giorno</button>
+      <button class="barButton " ng-click="selezionaPeriodo(3)" style="float:right" ng-class="{'selezionato': tabAttivo == 3}">Mese</button>
     </div>
   </div>
+  <!-- Controlliamo che siano presenti movimenti e mostriamo i dati,
+  altrimenti la pagina che non abbiamo trovato nulla -->
+  <div class = "cards" ng-if="movimentiPresenti">
   <div>
     <!-- <div class="card" ng-repeat="item in statistiche" style="display: inline-block;white-space: nowrap;overflow: hidden;"> -->
     <div class="card" ng-repeat="item in statisticheMovimenti">
@@ -66,23 +91,23 @@
   </div>
 </div>
 
-<div class = "cards" ng-if="movimentiPresenti">
     <div class="card">
-      <div class="item item-divider" ng-if="tabAttivo==1">Andamento Entrate/Uscite Mensile</div>
+      <div class="item item-divider" ng-if="tabAttivo==1">Andamento Entrate/Uscite Giornaliero</div>
       <div class="item item-divider" ng-if="tabAttivo==2">Andamento Entrate/Uscite Settimanale</div>
-      <div class="item item-divider" ng-if="tabAttivo==3">Andamento Entrate/Uscite Giornaliero</div>
+      <div class="item item-divider" ng-if="tabAttivo==3">Andamento Entrate/Uscite Mensile</div>
     <div class="item" id="movimenti_chart_div" style="width: 90%; height: 20%;"></div>
   </div>
 
   <div class="card">
-    <div class="item item-divider" ng-if="tabAttivo==1">Spese per categoria Mensile</div>
+    <div class="item item-divider" ng-if="tabAttivo==1">Spese per categoria Giornaliero</div>
     <div class="item item-divider" ng-if="tabAttivo==2">Spese per categoria Settimanale</div>
-    <div class="item item-divider" ng-if="tabAttivo==3">Spese per categoria Giornaliero</div>
+    <div class="item item-divider" ng-if="tabAttivo==3">Spese per categoria Mensile</div>
   <div class="item" id="categorie_chart_div" style="width: 90%; height: 20%;"></div>
 </div>
 </div>
-<div class = "cards" ng-if="movimentiPresenti==false">
-  non ci sono movimenti ancora
+<div class = "empty-data" ng-if="movimentiPresenti==false">
+  <img  src="img/no_data.png" />
+  <span> Non possiamo creare la tua dashboard per questo periodo, aggiungi movimenti </span>
 </div>
   </ion-content>
 </ion-view>

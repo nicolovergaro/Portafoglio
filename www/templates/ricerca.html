@@ -32,7 +32,7 @@
       </div>
 
       <div class="col">
-        <button class="button icon-left ion-search button-positive" style="width:90%" ng-click="caricaPerData()">Ricerca</button>
+        <button class="button icon-left ion-search button-positive" style="width:90%" ng-click="carica()">Ricerca</button>
       </div>
 
     </div>
@@ -60,6 +60,7 @@
 
 
 
+        <div ng-if = "trovato==true">
 
 
         <section id="cd-timeline" class="cd-container">
@@ -91,6 +92,10 @@
             </div>
           </div>
         </section>
+      </div>
+      <div ng-if="trovato==false">
+        la ricerca non ha prodotto risultati
+      </div>
 
 
 
