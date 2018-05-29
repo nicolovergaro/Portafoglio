@@ -1,10 +1,20 @@
 
 angular.module('starter.controllers')
-.controller('ProfiloCtrl', function($scope, $http, sharedProperties) {
+.controller('ProfiloCtrl', function($scope, $ionicLoading, $http, sharedProperties, $ionicModal, ionicDatePicker) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
     viewData.enableBack = false;
   });
-//
+
+  //animazione loading
+  $ionicLoading.show({
+        template: '<style> ion-spinner svg {stroke:white;} '+
+        'div{text-align:center; font-size:20px}</style>'+
+        '<div>' +
+        '<span>Caricamento</span><br><br>'+
+        '<ion-spinner icon="lines"></ion-spinner></div>'
+      })
+
+
   $scope.tabAttivo = 1;
   $scope.movimenti = undefined
 
@@ -25,8 +35,6 @@ angular.module('starter.controllers')
   var anno = d.getFullYear();
   getUser();
 
-
-  // console.log(sharedProperties.getIdUtente());
 
 
   function getUser(){
@@ -64,6 +72,7 @@ angular.module('starter.controllers')
         giorno:giorno
       }
     }).success(function(data){
+      $ionicLoading.hide()
       if (data.movimenti != undefined){
         $scope.movimentiPresenti = true
         $scope.movimenti = data.movimenti;
@@ -116,7 +125,7 @@ angular.module('starter.controllers')
 
   $scope.selezionaPeriodo=function(tab){
 
-
+    $scope.movimentiPresenti = false
     $scope.tabAttivo = tab;
     entrateTot = 0;
     usciteTot = 0;
@@ -126,10 +135,6 @@ angular.module('starter.controllers')
       setUpGraficoMovimenti();
       setUpGraficoCategorie();
     }
-
-
-
-
 
   }
 
@@ -216,13 +221,22 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
     usciteTot += uscite;
 
 
+    //non sono presenti else per settare a false perchè
+    // appena trovo che entrate + uscite
+    //è diverso da 0 vuol dire che sono presenti movimenti
+    //setto a false appena cambio il tab
+    if(entrateTot + usciteTot != 0){
+      $scope.movimentiPresenti = true
+    }
+
+
     $scope.statisticheMovimenti = [{nome:"Entrate",importo:entrateTot},{nome:"Uscite",importo:usciteTot},{nome:"Bilancio",importo:entrateTot+usciteTot}];
 
     // console.log(String(giorno),entrate,uscite);
 
     var vett = [String(giorno),entrate,uscite]
-    if (vett == []) $scope.movimentiPresenti = false
-    else $scope.movimentiPresenti = true
+    // if (vett == []) $scope.movimentiPresenti = false
+    // else $scope.movimentiPresenti = true
 
     return vett;
   }
@@ -239,20 +253,18 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
     // console.log("last" , lastday);
     // var currentDate = new Date($scope.movimenti[5].data);
     // console.log("current" , currentDate);
-    //
-    // console.log(new Date($scope.movimenti[5].data) >= firstday);
-    // console.log(new Date($scope.movimenti[1].data) <= lastday);
 
     var giorni = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     var movimenti = $scope.movimenti
+    // console.log(movimenti);
     var entrate = 0;
     var uscite = 0;
 
     for (var i = 0; i < movimenti.length; i++) {
-      if ((new Date(movimenti[i].data) >= firstday && new Date(movimenti[i].data) <= lastday)) {
-        // console.log("in settimana");
-        if (getDayOfWeek(movimenti[i].data)==giorni[giorno]) {
+      if ((new Date((movimenti[i].data).replace(/-/g, "/")) >= firstday
+            && new Date((movimenti[i].data).replace(/-/g, "/")) <= lastday)) {
+        if (getDayOfWeek(movimenti[i].data.replace(/-/g, "/"))==giorni[giorno]) {
           if (movimenti[i].importo > 0) {
             entrate += parseFloat(movimenti[i].importo);
           }else{
@@ -266,14 +278,18 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
     entrateTot += entrate;
     usciteTot += uscite;
 
+    if(entrateTot + usciteTot != 0){
+      $scope.movimentiPresenti = true
+    }
+
     $scope.statisticheMovimenti = [{nome:"Entrate",importo:entrateTot},{nome:"Uscite",importo:usciteTot},{nome:"Bilancio",importo:entrateTot+usciteTot}];
 
 
     // console.log(String(giorni[giorno]),entrate,uscite);
 
     var vett = [String(giorni[giorno]),entrate,uscite]
-    if (vett == []) $scope.movimentiPresenti = false
-    else $scope.movimentiPresenti = true
+    // if (vett == []) $scope.movimentiPresenti = false
+    // else $scope.movimentiPresenti = true
     return vett;
   }
 
@@ -291,8 +307,13 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
     var uscite = 0;
     // console.log(getHourOfDay(movimenti[2].data));
 
+    // console.log(start, end);
+
     for (var i = 0; i < movimenti.length; i++) {
-      if ((new Date(movimenti[i].data) >= start && new Date(movimenti[i].data) <= end)) {
+      // console.log (new Date((movimenti[i].data).replace(/-/g, "/")));
+
+      if ((new Date((movimenti[i].data).replace(/-/g, "/")) >= start
+            && new Date((movimenti[i].data).replace(/-/g, "/")) <= end)) {
         if (getHourOfDay(movimenti[i].data)==ora) {
           if (movimenti[i].importo > 0) {
             entrate += parseFloat(movimenti[i].importo);
@@ -336,5 +357,46 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
   function getHourOfDay(data){
     return data.split("-")[2].substring(2,5);
   }
+
+  //PARTE PER IL MODAL
+  $scope.tabTipoAttivo = 1;
+  $scope.data = "Inserisci la data";
+  $scope.ora = "Inserisci l'ora";
+  $scope.importo = 0;
+  $scope.nome = "Inserisci il nome"
+
+    $ionicModal.fromTemplateUrl('templates/addmovimenti.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+
+    var ipObj1 = {
+       callback: function (val) {  //Mandatory
+         var da=new Date(val);
+         da.setMinutes(da.getMinutes() - da.getTimezoneOffset());
+         $scope.data= da;
+         console.log(da.getUTCDate());
+         console.log(da.getUTCMonth() + 1);
+       },
+       disabledDates: [],
+       dateFormat: 'dd MMMM yyyy',
+       //inputDate: new Date(),      //Optional
+       mondayFirst: false,          //Optional
+       closeOnSelect: false,       //Optional
+       templateType: 'popup'       //Optional
+     };
+
+     $scope.openDatePicker = function(){
+       console.log("ok");
+       ionicDatePicker.openDatePicker(ipObj1);
+     };
+
+     $scope.selezionaTipo=function(tab){
+
+         $scope.importo *= -1;
+       $scope.tabTipoAttivo = tab;
+
+     }
 
 });

@@ -7,28 +7,47 @@
 angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker'])
 
 
-.run(function($ionicPlatform, $rootScope) {
+.run(function($ionicPlatform, $rootScope, $state) {
   $ionicPlatform.ready(function() {
+
+
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+      // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
+      StatusBar.overlaysWebView(false);
+      statusBar.hide();
       StatusBar.styleDefault();
     }
   });
+
+
+console.log(localStorage.getItem("username"), localStorage.getItem("password"));
+
+// // console.log(sharedProperties.getIdUtente());
+//   if (localStorage.getItem("id_utente") == null) {
+//     console.log("login")
+      // $state.go('app.login')
+    // }else {
+    //   console.log("profilo")
+    //   $state.go('app.profilo')
+    // }
+
 })
 
-.service('sharedProperties', function($location) {
+.service('sharedProperties', function($location, $state) {
         var id_utente, nome, cognome, saldo;
 
         return {
             getIdUtente: function () {
                 if(id_utente == undefined)
+                // $state.go('app.login');
                   $location.path('app/login');
                 else
                   return id_utente;

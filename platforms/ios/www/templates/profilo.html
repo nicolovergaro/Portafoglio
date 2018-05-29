@@ -2,7 +2,6 @@
   <style>
 
 
-
   .buttonsBar{
       display:flex;
       justify-content:space-around;
@@ -37,14 +36,24 @@
     color:white;
   }
 
+  #addButton{
+    background-color: #FFEB3B;
+    text-align: center;
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    font-size: 4vw;
+  }
+
 
 
   </style>
 
   <ion-content >
     <div class="positive-bg" style="padding-bottom:10px;padding-top:10px;text-align:center;">
-        <h3 style="color:white">Il tuo saldo è: <h3>
+      <h3 style="color:white">Il tuo saldo è: <h3>
         <h2 style="color:white">{{utente.saldo | currency}}<h2>
+          <button id="addButton" ng-click="modal.show()"><span class="fa fa-plus"></span></button>
     </div>
 
     <div>
