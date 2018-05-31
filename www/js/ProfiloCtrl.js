@@ -397,17 +397,23 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
          scope: $scope
        }).then(function(modal) {
          $scope.modal = modal;
+         var data = new Date();
+         $scope.data = data;
+         $scope.ora = data
+         $scope.cat = "Categoria"
+         $scope.importo = "";
+         $scope.nome = "";
          $scope.modal.show();
        });
      };
 
   $scope.closeModal = function() {
-    $scope.modal.remove();
+    $scope.modal.hide();
   };
 
  // Cleanup the modal when we're done with it!
   $scope.$on('modal.hidden', function() {
-    $scope.modal.remove();
+
   });
 
      $scope.selezionaTipo=function(tab){

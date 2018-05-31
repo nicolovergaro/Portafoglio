@@ -121,16 +121,17 @@ angular.module('starter.controllers')
   }
 
 
-  var index = 0;
+
 
   $scope.selezionaPeriodo=function(tab){
+
 
     $scope.movimentiPresenti = false
     $scope.tabAttivo = tab;
     entrateTot = 0;
     usciteTot = 0;
     categorie = [['Categoria','Importo']];
-    index = 1;
+
     if ($scope.movimenti != undefined) {
       setUpGraficoMovimenti();
       setUpGraficoCategorie();
@@ -360,16 +361,15 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
   //PARTE PER IL MODAL
   $scope.tabTipoAttivo = 1;
-  $scope.data = "Inserisci la data";
-  $scope.ora = "Inserisci l'ora";
-  $scope.importo = 35.60;
-  $scope.nome = "Inserisci il nome"
-
-    $ionicModal.fromTemplateUrl('templates/addmovimenti.html', {
-      scope: $scope
-    }).then(function(modal) {
-      $scope.modal = modal;
-    });
+  var data = new Date();
+  // $scope.data = String(giorno + "/" + mese + "/" + anno);
+  $scope.data = data;
+  // $scope.ora = String(orario);
+  $scope.ora = data
+  $scope.cat = "Categoria"
+  //Formatto la stringa data per il db
+  $scope.importo = "";
+  $scope.nome = "";
 
     var ipObj1 = {
        callback: function (val) {  //Mandatory
@@ -392,10 +392,33 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
        ionicDatePicker.openDatePicker(ipObj1);
      };
 
+     $scope.showModal = function() {
+       $ionicModal.fromTemplateUrl('templates/addmovimenti.html', {
+         scope: $scope
+       }).then(function(modal) {
+         $scope.modal = modal;
+         var data = new Date();
+         $scope.data = data;
+         $scope.ora = data
+         $scope.cat = "Categoria"
+         $scope.importo = "";
+         $scope.nome = "";
+         $scope.modal.show();
+       });
+     };
+
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+
+ // Cleanup the modal when we're done with it!
+  $scope.$on('modal.hidden', function() {
+
+  });
+
      $scope.selezionaTipo=function(tab){
 
-         $scope.importo *= -1;
-
+       $scope.importo *= -1;
        $scope.tabTipoAttivo = tab;
 
      }

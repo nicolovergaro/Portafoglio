@@ -98,11 +98,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		mUQ4rQ8K48jIBHmLNNQfgW/GKkg=
+		715d2zFoANI735zaLdLN7y7IEdQ=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		fad2m1W7vJTE4dg+gO4PU3USoS0=
+		oSUujkaWuZ5fZuT+VOfE5w2i9xQ=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -110,11 +110,11 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		7X9r4A8/ijkAI8u0D5EvLYnCjE8=
+		c0bxb1y39jBxJNJ2zjEh6+45RVg=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		nxBGj/xzuiaJywClNpdZvpI+4bA=
+		2Y2rWShEHzEHy5kfkXPzz8Akcpg=
 		</data>
 		<key>LaunchImage-568h@2x.png</key>
 		<data>
@@ -182,7 +182,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		uT9Vqtl9Z7HZA3DTU60m1XIZBXQ=
+		7eDRXbRB1fTddebVEgvVvUUadsA=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -190,7 +190,7 @@
 		</data>
 		<key>config.xml</key>
 		<data>
-		2OA/MxY5/nnUMfSeDMjAjwjm/qY=
+		3NHvakulgoeqPt99CkLcfglbLSE=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
@@ -276,6 +276,14 @@
 		<data>
 		4zWK3NnBXY+40Gj1mqKFoUClRM8=
 		</data>
+		<key>www/img/nodata.png</key>
+		<data>
+		BxGopuhDUc/+2F9WtJUoFtuvBdc=
+		</data>
+		<key>www/img/nodata2x.png</key>
+		<data>
+		QnqW2EtJhZ6DOItvlIw7Ug9kqD0=
+		</data>
 		<key>www/index.html</key>
 		<data>
 		lMkIz1EgeScYq5OSS0VZE6eRXaU=
@@ -306,7 +314,7 @@
 		</data>
 		<key>www/js/ProfiloCtrl.js</key>
 		<data>
-		PAz3KlxJiaXsBRntDMlCuYlfa7M=
+		Ign1rgf7Wd1sG+ZW1W5nJfna0Pk=
 		</data>
 		<key>www/js/RegistrazioneCtrl.js</key>
 		<data>
@@ -666,7 +674,7 @@
 		</data>
 		<key>www/lib/ionic/css/ionic.css</key>
 		<data>
-		L2iDRp0R7dkML5huHtCWW8FYLiY=
+		2jCdZm6Eo8R2m2q19+RUi5TGYfE=
 		</data>
 		<key>www/lib/ionic/css/ionic.min.css</key>
 		<data>
@@ -902,7 +910,7 @@
 		</data>
 		<key>www/templates/addmovimenti.html</key>
 		<data>
-		b6MfZMDR4GiwnJlDIG+TIhDJ8lE=
+		hu/1UcR/AT/eNf99mbyep/WwOYI=
 		</data>
 		<key>www/templates/cronologia.html</key>
 		<data>
@@ -924,10 +932,6 @@
 		<data>
 		SV78mchqKapLTwUgqzZXN5VU+OU=
 		</data>
-		<key>www/templates/loadingPage.html</key>
-		<data>
-		UkjIEPP5NxKjOSl48oFuTsplox0=
-		</data>
 		<key>www/templates/login.html</key>
 		<data>
 		zAfWE8wngzBtnHl+sgdx6je/M9U=
@@ -938,7 +942,7 @@
 		</data>
 		<key>www/templates/profilo.html</key>
 		<data>
-		gAKjYgmxSr/nF7+mQ8T/uHT3ccU=
+		SoF2M6wmGuk5mFySxWyGvHCb4es=
 		</data>
 		<key>www/templates/registrazione.html</key>
 		<data>
@@ -1220,22 +1224,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mUQ4rQ8K48jIBHmLNNQfgW/GKkg=
+			715d2zFoANI735zaLdLN7y7IEdQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			AEI9g3LH7CeiD7nAUc1VRCie/WpM+P65IfcHbcSPonQ=
+			Wd+JveOQhc+iPJPwxJ7g2mH2BYTXXRHqchdFDZ6GdI0=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fad2m1W7vJTE4dg+gO4PU3USoS0=
+			oSUujkaWuZ5fZuT+VOfE5w2i9xQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			iBSJQIYDAT7eDx8iIHz1Ze/gEyyvZunMHN2MZE+apFo=
+			dO7+2Dc45vHQ5bYNwJdfIEZT+DfWUBA/nSeYtDSHGgU=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -1253,11 +1257,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7X9r4A8/ijkAI8u0D5EvLYnCjE8=
+			c0bxb1y39jBxJNJ2zjEh6+45RVg=
 			</data>
 			<key>hash2</key>
 			<data>
-			TW4nhTHtaZ8fROQdbWm0WbN4eipHtJFKej/pTYAX03Q=
+			8caFg5/9mGj9suvFKkwHJNH+SWWwtkUJ0CR9EJM+H7A=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -1440,22 +1444,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uT9Vqtl9Z7HZA3DTU60m1XIZBXQ=
+			7eDRXbRB1fTddebVEgvVvUUadsA=
 			</data>
 			<key>hash2</key>
 			<data>
-			nYYW/4OzQ5jBKZ9unzpTHXzwY8oZXbJTPcRP1yzns7U=
+			cczWOMI6jyB+GUmAOYD+fXg7uElmtYJMrr/jwqxw3JM=
 			</data>
 		</dict>
 		<key>config.xml</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			2OA/MxY5/nnUMfSeDMjAjwjm/qY=
+			3NHvakulgoeqPt99CkLcfglbLSE=
 			</data>
 			<key>hash2</key>
 			<data>
-			rYCK18cAUgsvAQv7EvflGvcCBrOVLe42U7wwLIYCtxg=
+			pz531194mlrEY0ia0h8p+HgpGkgmlVIAIRAWnqaoGE0=
 			</data>
 		</dict>
 		<key>embedded.mobileprovision</key>
@@ -1689,6 +1693,28 @@
 			O6RqLyW1oVoiJfY8C76p8sLiqH6S/l8mKlC8j88Rx/g=
 			</data>
 		</dict>
+		<key>www/img/nodata.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BxGopuhDUc/+2F9WtJUoFtuvBdc=
+			</data>
+			<key>hash2</key>
+			<data>
+			tyck4/Epuc9CTlud0zUxCl4JgdtDO04v5zvbQL2aL0s=
+			</data>
+		</dict>
+		<key>www/img/nodata2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QnqW2EtJhZ6DOItvlIw7Ug9kqD0=
+			</data>
+			<key>hash2</key>
+			<data>
+			epi7/bFhxrScH56wkWzKzfMn/iCuXSGRITso2DqM+mE=
+			</data>
+		</dict>
 		<key>www/index.html</key>
 		<dict>
 			<key>hash</key>
@@ -1770,11 +1796,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			PAz3KlxJiaXsBRntDMlCuYlfa7M=
+			Ign1rgf7Wd1sG+ZW1W5nJfna0Pk=
 			</data>
 			<key>hash2</key>
 			<data>
-			mIt0g8UiYF2c0M82t8/ze93cQMInxo7TtaWxPvtz7dI=
+			syYOeb8dlFQ0Vj22JKrW/kJ1zjfxi12MvZRRR1gURV8=
 			</data>
 		</dict>
 		<key>www/js/RegistrazioneCtrl.js</key>
@@ -2760,11 +2786,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			L2iDRp0R7dkML5huHtCWW8FYLiY=
+			2jCdZm6Eo8R2m2q19+RUi5TGYfE=
 			</data>
 			<key>hash2</key>
 			<data>
-			4q+rGCWO37nwLGdwTRLlBRnczWB2Kz9J1nHcrqnpDTI=
+			luyo4lvwotd76Qk27bcVpOQIvhjusOGpPAbpzkzVY4s=
 			</data>
 		</dict>
 		<key>www/lib/ionic/css/ionic.min.css</key>
@@ -3409,11 +3435,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			b6MfZMDR4GiwnJlDIG+TIhDJ8lE=
+			hu/1UcR/AT/eNf99mbyep/WwOYI=
 			</data>
 			<key>hash2</key>
 			<data>
-			pqE8VL0+BzOtviBO5uSYDwB43WneIZJwtddMdY3Xi5E=
+			eY5YZ+PX3D6TEEFdkUeBwgfS/C0/xQYFG3JjcVFsIOg=
 			</data>
 		</dict>
 		<key>www/templates/cronologia.html</key>
@@ -3471,17 +3497,6 @@
 			Bo+E1/qB0UAH/tn/IiF4USde4BrQeCO9ZOLIK+k2Wis=
 			</data>
 		</dict>
-		<key>www/templates/loadingPage.html</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			UkjIEPP5NxKjOSl48oFuTsplox0=
-			</data>
-			<key>hash2</key>
-			<data>
-			QH6gQn6M4OINtRkZJKxEIP+T5KSPLcmm58yBOpGa2ho=
-			</data>
-		</dict>
 		<key>www/templates/login.html</key>
 		<dict>
 			<key>hash</key>
@@ -3508,11 +3523,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gAKjYgmxSr/nF7+mQ8T/uHT3ccU=
+			SoF2M6wmGuk5mFySxWyGvHCb4es=
 			</data>
 			<key>hash2</key>
 			<data>
-			RabPijJLqqLsBjatSkW8XU4GohJnSCX42XjLn+P1loY=
+			PrFhzqk24tscglLjIpjJZQb4Ev047QR/3yvjA57KG+Q=
 			</data>
 		</dict>
 		<key>www/templates/registrazione.html</key>
