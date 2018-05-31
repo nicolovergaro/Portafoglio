@@ -1,6 +1,6 @@
 <ion-modal-view>
   <style>
-  .buttonsBar{
+  .buttonsBarMovimenti{
       display:flex;
       justify-content:space-around;
       margin:10px;
@@ -9,7 +9,7 @@
       height: 50px;
   }
 
-  .barButton{
+  .barButtonMovimenti{
     height: 100%;
     display:inline-block;
     white-space: nowrap;
@@ -42,32 +42,29 @@
   </style>
         <ion-header-bar class="bar bar-header bar-positive">
           <h1 class="title">Aggiungi Movimenti</h1>
-          <button class="button button-clear button-primary" ng-click="modal.hide()">Annulla</button>
+          <button class="button button-clear button-primary" ng-click="closeModal()">Annulla</button>
         </ion-header-bar>
 
         <ion-content>
 
-          <div class="buttonsBar">
-            <button class="barButton " ng-click="selezionaTipo(1)" ng-class="{'selezionatoGreen': tabTipoAttivo == 1}">Entrata</button>
-            <button class="barButton " ng-click="selezionaTipo(2)" ng-class="{'selezionatoRed': tabTipoAttivo == 2}">Uscita</button>
+          <div class="buttonsBarMovimenti">
+            <button class="barButtonMovimenti " ng-click="selezionaTipo(1)" ng-class="{'selezionatoGreen': tabTipoAttivo == 1}">Entrata</button>
+            <button class="barButtonMovimenti " ng-click="selezionaTipo(2)" ng-class="{'selezionatoRed': tabTipoAttivo == 2}">Uscita</button>
           </div>
 
           <div class="list">
 
-            <div class="row">
 
-            <div class ="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px">
-                <span class="fa fa-tag" style="margin-right: 10px"></span>{{nome}}
+            <div class ="row" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px">
+              <!-- <label class="item item-input item-stacked-label" style="border: 0; font-size: 3.5vw">
+                <span class="input-label">Nome</span>
+                <input type="text" placeholder="John">
+              </label> -->
+                <span class="fa fa-tag" ><input style="margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw; border: 0" ng-model="nome"  placeholder="Nome"/></span>
             </div>
 
-            <div class ="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px" >
-                <!-- <ion-datetime displayFormat="HH:mm"> </ion-datetime> -->
-                <span class="fa fa-money-bill" style="margin-right: 10px"></span>{{importo | currency}}
-            </div>
 
-            </div>
-
-            <div class="row">
+            <div class="row" >
 
             <div class ="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px" ng-click="openDatePicker()">
                 <span class="fa fa-calendar" style="margin-right: 10px"></span>{{data | date: 'dd MMM yyyy'}}
@@ -75,26 +72,47 @@
 
             <div class ="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px" >
                 <!-- <ion-datetime displayFormat="HH:mm"> </ion-datetime> -->
-                <span class="fa fa-clock-o" style="margin-right: 10px"></span>{{ora | date: 'hh mm'}}
+                <span class="fa fa-clock-o" style="margin-right: 10px"></span>{{ora | date: 'hh:mm'}}
             </div>
 
           </div>
 
+          <div class="row">
+            <div  class="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px; width: 50%" ng-click="setVisibile()">
+                <span class="fa fa-sitemap" style="margin-right: 10px"></span>{{cat}}
+            </div>
+            <div class ="col" style="width: 50%;font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px" >
+                <label class="fa fa-money-bill" ><input style="margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw; border: 0;" ng-model="importo" placeholder="{{0 | currency}}"/></label>
+            </div>
+
+          </div>
+
+          <div class="cd-timeline-block">
+
+            <!--  Categoria -->
+            <!-- <div ng-if="tabTipoAttivo == 2" class="cd-timeline-icon text-center red"  >
+              <i class="{{movimento.descrizione}}" style="font-size:30px" ></i>
+            </div>
+
+            <div ng-if="tabTipoAttivo == 1" class="cd-timeline-icon text-center green"  >
+              <i class="{{movimento.descrizione}}" style="font-size:30px" ></i>
+            </div> -->
 
 
 
-            <!-- <label class="item item-input">
-              <span class="input-label">Nome</span>
-              <input ng-model="nome" type="text">
-            </label>
-            <label class="item item-input">
-              <span class="input-label">Importo</span>
-              <input ng-model="importo" type="text" placeholder="Clicca per insierire l'importo"> {{importo | currency}} </input>
-            </label>
-            <label class="item item-input">
-              <span class="input-label">Data</span>
-              <div ng-click="openDatePicker()">{{data | date: 'dd MMM yyyy'}}</div>
-            </label> -->
+            <div ng-if="tabTipoAttivo == 2" class="cd-timeline-content padding red">
+            	<h5 class="marginBottom0 marginTop0">{{nome}}</h5>
+            	<p class="marginTop5 cd-author">{{data | date: 'dd MMM yyyy'}}, {{ora | date: 'hh:mm'}}<span class="timelineText" style="float:right">{{importo | currency}}</span></p>
+
+            </div>
+            <div ng-if="tabTipoAttivo == 1" class="cd-timeline-content padding green">
+              <h5 class="marginBottom0 marginTop0">{{nome}}</h5>
+            	<p class="marginTop5 cd-author">{{data | date: 'dd MMM yyyy'}}, {{ora | date: 'hh:mm'}}<span class="timelineText" style="float:right">{{importo | currency}}</span></p>
+
+            </div>
+
+          </div>
+
             <button class="button button-full button-positive" ng-click="createContact(newUser)">Create</button>
           </div>
         </ion-content>
