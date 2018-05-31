@@ -7,20 +7,20 @@
     "files": {}
   },
   "installed_plugins": {
-    "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.vergarotoma.wallet"
     },
     "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "com.vergarotoma.wallet"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.vergarotoma.wallet"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.vergarotoma.wallet"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.vergarotoma.wallet"
     }
   },
   "dependent_plugins": {}
