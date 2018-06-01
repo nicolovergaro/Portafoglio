@@ -1,0 +1,65 @@
+<ion-view view-title="Entrate">
+  <ion-content>
+    <ion-list>
+
+      <!--
+      <form> <br>
+        <div style="padding-bottom: 2%; width: 100%;"><center>
+        <input style="border: 2px solid; width: 60%; border-radius: 7px;" type="text" placeholder="Nome" ng-model="nome"></input></center>
+      </div>
+      <div style="padding-bottom: 2%; width: 100%"><center>
+        <input style="border: 2px solid; width:60%; border-radius: 7px;" type="number" placeholder="Importo" ng-model="importo"></input></center>
+      </div>
+      <div style="padding-bottom: 2%; width:100%;"><center>
+        <input style="border: 2px solid; width:60%; border-radius: 7px;" type="datetime-local" placeholder="Inserisci la data" ng-model="data"></input></center>
+      </div>
+      <div style="padding-bottom: 2%; width: 100%"><center>
+        <input style="border: 2px solid; width:60%;border-radius: 7px;" type="number" placeholder="Inserisci id_tipo" ng-model="id_tipo"></input></center>
+      </div>
+      </form>
+      !-->
+      <label class="item item-input">
+        <i class="icon ion-android-send placeholder-icon"></i>
+        <input type="text" placeholder="Nome" ng-model="nome" />
+      </label>
+
+      <label class="item item-input">
+        <i class="icon ion-social-euro placeholder-icon"></i>
+        <input type="number" placeholder="Importo" ng-model="importo" />
+      </label>
+
+      <label class="item item-input">
+        <i class="icon ion-calendar placeholder-icon"></i>
+        <input type="datetime-local" placeholder="Data" ng-model="data" />
+      </label>
+
+      <label class="item item-input">
+        <i class="icon ion-navicon-round placeholder-icon"></i>
+        <select ng-model="id_tipo" style="margin: 5.2px">
+          <option ng-repeat="entrata in entrate | orderBy: 'tipo'" value="{{entrata.id_tipo}}">{{entrata.tipo}}</option>
+        </select>
+      </label>
+
+      <br>
+
+    <center>
+      <a href="http://portafoglio.altervista.org/insert.php?tabella=entrate&nome={{nome}}&importo={{importo}}&data={{data}}&id_tipo={{id_tipo}}&id_utente={{id_utente}}">
+       <button class="button button-block button-positive" style="width:50%">
+          Aggiungi Entrata
+       </button>
+      </a>
+     </center>
+  <!--   <div ng-repeat="entrata in entrate" href="#/app/playlists/{{entrata.id_entrate}}">
+       <div style="border-radius: 5%; border:2px solid; margin-right: 2%; margin-left:2%;margin-bottom: 5%;">
+      <b><h2>{{entrata.nome}}</h2></b>
+   <br>
+      € {{entrata.importo}}
+   <br>
+      {{entrata.data}}
+   <br>
+       {{entrata.id_tipo}}
+     </div>
+   </div>-->
+   </ion-list>
+  </ion-content>
+</ion-view>
