@@ -41,12 +41,11 @@
 
 
 
-        <div  style="display:{{visibile}}">
+        <div  style="display:{{visibile}}; scrollX=true">
           <div class="row" ng-repeat="sottocategoria in categorie">
             <div class="col-33" ng-repeat="categoria in sottocategoria" >
-              <button class="button" style="width:95%;margin:5px" ng-click="selezionaCat(categoria.tipo,categoria.id_tipo)">
-                <i  class="icon1 {{categoria.descrizione}} " style="font-size:11vw">
-                </i>
+              <button class="button" style="width:95%;margin:5px"  ng-click="selezionaCat(categoria.tipo,categoria.id_tipo)">
+                <i  class="icon1 {{categoria.descrizione}} " style="font-size:11vw"></i>
                 <br>
                 <span style="font-size:3vw;white-space:nowrap ">
                   {{categoria.tipo}}
@@ -93,8 +92,9 @@
           </div>
         </section>
       </div>
-      <div ng-if="trovato==false">
-        la ricerca non ha prodotto risultati
+      <div class = "empty-data" ng-if="trovato==false">
+        <img  src="img/noresults.png" style="width: 80%; height: 80%"/>
+        <!-- <span> Non possiamo creare la tua dashboard per questo periodo, aggiungi movimenti </span> -->
       </div>
 
 

@@ -39,7 +39,9 @@ $scope.id_utente = sharedProperties.getIdUtente();
         var data=dateLong.toString().substring(0,15);
         var ora=o[i];
 
-        $scope.uscite[i].data=data+", "+ora;
+        $scope.uscite[i].data=data;
+        $scope.uscite[i].ora=ora;
+
 
       }
 

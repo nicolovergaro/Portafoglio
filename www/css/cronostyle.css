@@ -37,6 +37,7 @@ Main components
 
 -------------------------------- */
 .timelineText {
+
   color: black;
 }
 .timelineIcon {
@@ -44,6 +45,7 @@ Main components
   color: white;
 }
 .cd-author {
+
   color:gray;
 }
 #cd-timeline {
@@ -117,7 +119,7 @@ Main components
 }
 
 .cd-timeline-content {
-  height: 60px;
+  height: 70px;
   position: relative;
   margin-left: 60px;
   background: white;

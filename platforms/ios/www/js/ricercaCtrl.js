@@ -1,6 +1,6 @@
 
 angular.module('starter.controllers')
-.controller('ricercaCtrl', function($scope, $http, ionicDatePicker) {
+.controller('ricercaCtrl', function($scope, $http, ionicDatePicker, $ionicScrollDelegate) {
   var link = "http://portafoglio.altervista.org/select.php";
   var link1 = "http://portafoglio.altervista.org/ricercaPerTipo.php";
   var link2 = "http://portafoglio.altervista.org/getCronologia.php";
@@ -187,7 +187,7 @@ angular.module('starter.controllers')
     $scope.id_tipo=id_tipo;
     if($scope.visibile=='block'){
       $scope.visibile='none';
-
+      $ionicScrollDelegate.scrollTop();
     }
   }
 

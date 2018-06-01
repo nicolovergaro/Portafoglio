@@ -6,6 +6,8 @@
   },
   "dependencies": {
     "ionic-datepicker": "^1.2.1",
-    "angular-google-chart": "^0.1.0"
+    "angular-google-chart": "^0.1.0",
+    "ionic-datepicker-fork-ionic1": "^1.6.3",
+    "ionic-timepicker": "^0.6.0"
   }
 }

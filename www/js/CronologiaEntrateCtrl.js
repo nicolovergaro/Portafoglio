@@ -41,7 +41,8 @@ function getLongData(){
       var data=dateLong.toString().substring(0,15);
       var ora=o[i];
 
-      $scope.entrate[i].data=data+", "+ora;
+      $scope.entrate[i].data=data;
+      $scope.entrate[i].ora=ora;
 
     }
 
