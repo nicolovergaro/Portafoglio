@@ -152,18 +152,40 @@ angular.module('starter.controllers')
 
   var ipObj1 = {
      callback: function (val) {  //Mandatory
-       var da=new Date(val);
-       da.setMinutes(da.getMinutes() - da.getTimezoneOffset());
+       if (typeof val === 'number') {
+         //La data è un solo numero, quindi la ricerca va fatta su un solo giorno
+         var da = new Date(val);
+         da.setMinutes(da.getMinutes() - da.getTimezoneOffset());
+         var dataScelta = da;
+       }else{
+       //la data è un periodo, la ricerca va fatta su più giorni
+        var start = new Date(val['start']);
+        start.setMinutes(start.getMinutes() - start.getTimezoneOffset());
+        var end = new Date(val['end']);
+        end.setMinutes(end.getMinutes() - end.getTimezoneOffset());
+        var dateScelte = [start, end]
+       }
+
+       if (dateScelte) {
+         for (var index=0;index<2; index++) {
+           console.log(dateScelte[index].getUTCDate());
+           console.log(dateScelte[index].getUTCMonth() + 1);
+         }
+       }else{
+         console.log(dataScelta.getUTCDate());
+         console.log(dataScelta.getUTCMonth() + 1);
+       }
+
+
        $scope.data= da;
-       console.log(da.getUTCDate());
-       console.log(da.getUTCMonth() + 1);
+
      },
      disabledDates: [],
      dateFormat: 'dd MMMM yyyy',
-     //inputDate: new Date(),      //Optional
      mondayFirst: false,          //Optional
      closeOnSelect: false,       //Optional
-     templateType: 'popup'       //Optional
+     templateType: 'popup',
+     selectMode: 'day'      //Optional
    };
 
    $scope.openDatePicker = function(){

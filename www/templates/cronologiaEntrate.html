@@ -11,7 +11,8 @@
 
             <div class="cd-timeline-content padding green">
             	<h5 class="marginBottom0 marginTop0">{{entrata.nome}}</h5>
-            	<p class="marginTop5 cd-author">{{entrata.data}}<span class="timelineText" style="float:right">+{{entrata.importo | currency}}</span></p>
+              <span class="cd-author">{{entrata.data}}</span>
+            	<p style="margin-top:0"class="cd-author"><span>{{entrata.ora}}</span><span class="timelineText" style="float:right">{{entrata.importo | currency}}</span></p>
 
             </div>
           </div>

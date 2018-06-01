@@ -10,8 +10,11 @@
             </div>
 
             <div class="cd-timeline-content padding red">
-            	<h5 class="marginBottom0 marginTop0">{{uscita.nome}}</h5>
-            	<p class="marginTop5 cd-author">{{uscita.data}}<span class="timelineText" style="float:right">{{uscita.importo | currency}}</span></p>
+              <h5 class="marginBottom0 marginTop0">{{uscita.nome}}</h5>
+              <span class="cd-author">{{uscita.data}}</span>
+            	<p style="margin-top:0"class="cd-author"><span>{{uscita.ora}}</span><span class="timelineText" style="float:right">{{uscita.importo | currency}}</span></p>
+
+            </div>
 
             </div>
           </div>

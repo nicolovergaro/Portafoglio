@@ -43,7 +43,8 @@ angular.module('starter.controllers')
         var data=dateLong.toString().substring(0,15);
         var ora=o[i];
 
-        $scope.movimenti[i].data=data+", "+ora;
+        $scope.movimenti[i].data=data;
+        $scope.movimenti[i].ora=ora;
 
       }
 

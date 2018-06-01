@@ -98,11 +98,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		715d2zFoANI735zaLdLN7y7IEdQ=
+		d+BIolH5c03mFtldb6SqiO5Rnyk=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		oSUujkaWuZ5fZuT+VOfE5w2i9xQ=
+		F/vTJsol80IgpDGl4Mtdb1SVTG0=
 		</data>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -110,7 +110,7 @@
 		</data>
 		<key>CDVLaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		c0bxb1y39jBxJNJ2zjEh6+45RVg=
+		7w4ceRP7ZnxD9V0CWsXRtsNM1nI=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -182,7 +182,7 @@
 		</data>
 		<key>MainViewController.nib</key>
 		<data>
-		7eDRXbRB1fTddebVEgvVvUUadsA=
+		ugPQhwDlp7/OcgriFM2PneeQMhA=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -194,7 +194,7 @@
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>
-		fFS3JVykxayCqHuIsMlR2gXalc0=
+		YE9PsTu/Mm53iWbrC+CNOJHSU3c=
 		</data>
 		<key>www/cordova-js-src/exec.js</key>
 		<data>
@@ -230,11 +230,11 @@
 		</data>
 		<key>www/css/ionic.app.css</key>
 		<data>
-		373KcXUt7oyuYptEMXf8Vb/ruEw=
+		vKZoVOluG9stDiMsz6uDP3jdzcQ=
 		</data>
 		<key>www/css/ionic.app.min.css</key>
 		<data>
-		1skdgQkG//h8yQLmH59WMUmKXLg=
+		zcpFBLvXY+X0Z7gLW99GrfFkk5o=
 		</data>
 		<key>www/css/style.css</key>
 		<data>
@@ -334,7 +334,7 @@
 		</data>
 		<key>www/js/ricercaCtrl.js</key>
 		<data>
-		BSiLVo/OdnDdHiC/naP26RBQTtk=
+		sQi/eilnmW2YoILLkI2n5g8jAG0=
 		</data>
 		<key>www/js/utils.js</key>
 		<data>
@@ -630,7 +630,7 @@
 		</data>
 		<key>www/lib/ionic-datepicker/dist/ionic-datepicker.bundle.min.js</key>
 		<data>
-		wM15gGk5P19UTKuOw6Ja/28lcuI=
+		Yf7hv4OVBFMHunnOrog8e1WYy8U=
 		</data>
 		<key>www/lib/ionic-datepicker/gulpfile.js</key>
 		<data>
@@ -662,7 +662,7 @@
 		</data>
 		<key>www/lib/ionic-datepicker/src/ionic-datepicker.styles.css</key>
 		<data>
-		X0Otrhh/6jcISO6h+z3PkJ2p5hY=
+		otjeHK0Q0f6O3ngpUrbcslL1G4I=
 		</data>
 		<key>www/lib/ionic/README.md</key>
 		<data>
@@ -678,7 +678,7 @@
 		</data>
 		<key>www/lib/ionic/css/ionic.min.css</key>
 		<data>
-		rU4fKqbdv4CmJLPXtjf1q52SoS8=
+		5dlB2cD4KTnj/AAYzM5aqwQZ8AY=
 		</data>
 		<key>www/lib/ionic/fonts/ionicons.eot</key>
 		<data>
@@ -858,7 +858,7 @@
 		</data>
 		<key>www/lib/ionic/scss/_variables.scss</key>
 		<data>
-		OcOJT1zdcQxsJ3zo1bdkny85pRc=
+		UQbUunZ6d9cX/LlvzY7DOXpc/cM=
 		</data>
 		<key>www/lib/ionic/scss/ionic.scss</key>
 		<data>
@@ -938,7 +938,7 @@
 		</data>
 		<key>www/templates/menu.html</key>
 		<data>
-		v6fGCdQARwBjKUHITPfBWvLE9SU=
+		QQ+qrKADTgkJGn4LGAbhbx5+FOI=
 		</data>
 		<key>www/templates/profilo.html</key>
 		<data>
@@ -950,7 +950,7 @@
 		</data>
 		<key>www/templates/ricerca.html</key>
 		<data>
-		0OjxM6FVayLAyXBsSyiRdHHKWtA=
+		jpZDOO4jNWRW3mETBQWs3E73UA8=
 		</data>
 		<key>www/templates/tabs.html</key>
 		<data>
@@ -1224,22 +1224,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			715d2zFoANI735zaLdLN7y7IEdQ=
+			d+BIolH5c03mFtldb6SqiO5Rnyk=
 			</data>
 			<key>hash2</key>
 			<data>
-			Wd+JveOQhc+iPJPwxJ7g2mH2BYTXXRHqchdFDZ6GdI0=
+			fwQGg/nJrXf5xwZ7hbvVD450fLREAd8UNcb/YYmkeuI=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			oSUujkaWuZ5fZuT+VOfE5w2i9xQ=
+			F/vTJsol80IgpDGl4Mtdb1SVTG0=
 			</data>
 			<key>hash2</key>
 			<data>
-			dO7+2Dc45vHQ5bYNwJdfIEZT+DfWUBA/nSeYtDSHGgU=
+			+Q8IXdYSerPiOXRfEg0x64+bmLTyMrg59DJWO+p9xF0=
 			</data>
 		</dict>
 		<key>CDVLaunchScreen.storyboardc/Info.plist</key>
@@ -1257,11 +1257,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			c0bxb1y39jBxJNJ2zjEh6+45RVg=
+			7w4ceRP7ZnxD9V0CWsXRtsNM1nI=
 			</data>
 			<key>hash2</key>
 			<data>
-			8caFg5/9mGj9suvFKkwHJNH+SWWwtkUJ0CR9EJM+H7A=
+			SnfG9VHr3cyg2VcNItMiYAwfwp+UUrsbVJTh9AeUzHY=
 			</data>
 		</dict>
 		<key>LaunchImage-568h@2x.png</key>
@@ -1444,11 +1444,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7eDRXbRB1fTddebVEgvVvUUadsA=
+			ugPQhwDlp7/OcgriFM2PneeQMhA=
 			</data>
 			<key>hash2</key>
 			<data>
-			cczWOMI6jyB+GUmAOYD+fXg7uElmtYJMrr/jwqxw3JM=
+			T5hEEYKQm9JfJP8y3mSiN4QdqUBi6kSQEgkjzQFZWsU=
 			</data>
 		</dict>
 		<key>config.xml</key>
@@ -1466,11 +1466,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fFS3JVykxayCqHuIsMlR2gXalc0=
+			YE9PsTu/Mm53iWbrC+CNOJHSU3c=
 			</data>
 			<key>hash2</key>
 			<data>
-			l+pmwE4wBrFFyCDozH2AMy0VXHVOwOI3p3pF5fmxl3E=
+			ZVZk54p20dYtWpV5in6DtNl0E8DAKxl0xSg5otrxRBs=
 			</data>
 		</dict>
 		<key>www/cordova-js-src/exec.js</key>
@@ -1565,22 +1565,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			373KcXUt7oyuYptEMXf8Vb/ruEw=
+			vKZoVOluG9stDiMsz6uDP3jdzcQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			amECnlFdb4Mw0LoniVtDGI6CIFJ5TVRWTo2oyEEdGC8=
+			4m3yFRDQXsluw338EGy8dlsbgFPnttJ6l2QSc7TfpOY=
 			</data>
 		</dict>
 		<key>www/css/ionic.app.min.css</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			1skdgQkG//h8yQLmH59WMUmKXLg=
+			zcpFBLvXY+X0Z7gLW99GrfFkk5o=
 			</data>
 			<key>hash2</key>
 			<data>
-			Jz6OuwcdCLUbpER+kPhvEHdnu/RF6I0knATafjgr+Pk=
+			bIRyBgehz1z2V6uaGRvmxM0zc4KxgbWe5Ang2W6GchA=
 			</data>
 		</dict>
 		<key>www/css/style.css</key>
@@ -1851,11 +1851,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BSiLVo/OdnDdHiC/naP26RBQTtk=
+			sQi/eilnmW2YoILLkI2n5g8jAG0=
 			</data>
 			<key>hash2</key>
 			<data>
-			4pnE9rz22emICBPaFQmGzG1To9drVhapp1VNf46GbDg=
+			2DT59XgRvg1kUccnobG8bugUgR3fh3k0WZDTXQqNr4g=
 			</data>
 		</dict>
 		<key>www/js/utils.js</key>
@@ -2665,11 +2665,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wM15gGk5P19UTKuOw6Ja/28lcuI=
+			Yf7hv4OVBFMHunnOrog8e1WYy8U=
 			</data>
 			<key>hash2</key>
 			<data>
-			8inW3zUvkUTrrCNlHUUhwsCGz+11JmrNCKw8obX8ZUM=
+			/epE0UPohBFPnHj7FleTLfZCJj/ifDBMm+iu+kttIVc=
 			</data>
 		</dict>
 		<key>www/lib/ionic-datepicker/gulpfile.js</key>
@@ -2753,11 +2753,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			X0Otrhh/6jcISO6h+z3PkJ2p5hY=
+			otjeHK0Q0f6O3ngpUrbcslL1G4I=
 			</data>
 			<key>hash2</key>
 			<data>
-			eGI8ernU8QCRI1DAx/f/ljaDM3uafs33FUPvJa+T+dg=
+			XMVj9sG6rxZUqU0SBLmNNHiPVyH4z64uNMccRaNsQtE=
 			</data>
 		</dict>
 		<key>www/lib/ionic/README.md</key>
@@ -2797,11 +2797,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rU4fKqbdv4CmJLPXtjf1q52SoS8=
+			5dlB2cD4KTnj/AAYzM5aqwQZ8AY=
 			</data>
 			<key>hash2</key>
 			<data>
-			dwHH9lxtIXWFG3k8P6eJ+N7UMrQ717vlpgUU//ybHUI=
+			TEW81pvhlEyPo82QNgY6T1M1gBxYoIYz4d+ql+Z4jlc=
 			</data>
 		</dict>
 		<key>www/lib/ionic/fonts/ionicons.eot</key>
@@ -3292,11 +3292,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			OcOJT1zdcQxsJ3zo1bdkny85pRc=
+			UQbUunZ6d9cX/LlvzY7DOXpc/cM=
 			</data>
 			<key>hash2</key>
 			<data>
-			ZqCUFYgh4fclTBIPpwnfcwRaqzdYXWV3NzTmClceXCo=
+			AvMN1Mg+GjwhBBwRcWk4KP3uXNVV5J8t7shWnjKcnJ0=
 			</data>
 		</dict>
 		<key>www/lib/ionic/scss/ionic.scss</key>
@@ -3512,11 +3512,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			v6fGCdQARwBjKUHITPfBWvLE9SU=
+			QQ+qrKADTgkJGn4LGAbhbx5+FOI=
 			</data>
 			<key>hash2</key>
 			<data>
-			ikWmX+wfmks9XE5ASWTmIJKnIHbEKR2/1AmjRcQEc5k=
+			lTDZYW/4wEez7fwPyIX7ogcqHZBDmsTYO6qjDTziHx4=
 			</data>
 		</dict>
 		<key>www/templates/profilo.html</key>
@@ -3545,11 +3545,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0OjxM6FVayLAyXBsSyiRdHHKWtA=
+			jpZDOO4jNWRW3mETBQWs3E73UA8=
 			</data>
 			<key>hash2</key>
 			<data>
-			/UJ1Av7RZdnDaQtWWW0SFkyaqWnPj+nrOV1BMxv7Dqc=
+			ofrcIBe3o7knefmbKg4QaTr/D5q8hduTh2+wLg20z0g=
 			</data>
 		</dict>
 		<key>www/templates/tabs.html</key>

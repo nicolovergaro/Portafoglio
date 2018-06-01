@@ -48,8 +48,8 @@
         <ion-content>
 
           <div class="buttonsBarMovimenti">
-            <button class="barButtonMovimenti " ng-click="selezionaTipo(1)" ng-class="{'selezionatoGreen': tabTipoAttivo == 1}">Entrata</button>
-            <button class="barButtonMovimenti " ng-click="selezionaTipo(2)" ng-class="{'selezionatoRed': tabTipoAttivo == 2}">Uscita</button>
+            <button class="barButtonMovimenti " ng-click="selezionaTipo(1)" ng-class="{'selezionatoGreen': modal.tabTipoAttivo == 1}">Entrata</button>
+            <button class="barButtonMovimenti " ng-click="selezionaTipo(2)" ng-class="{'selezionatoRed': modal.tabTipoAttivo == 2}">Uscita</button>
           </div>
 
           <div class="list">
@@ -60,29 +60,29 @@
                 <span class="input-label">Nome</span>
                 <input type="text" placeholder="John">
               </label> -->
-                <span class="fa fa-tag" ><input maxlength='32' size='32' style="margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw; border: 0" ng-model="nome"  placeholder="Nome"/></span>
+                <span class="fa fa-tag" ><input maxlength='40' size='40' style="margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw; border: 0" ng-model="modal.nome"  placeholder="Nome"/></span>
             </div>
 
 
             <div class="row" >
 
             <div class ="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px" ng-click="openDatePicker()">
-                <span class="fa fa-calendar" style="margin-right: 10px"></span>{{data | date: 'dd MMM yyyy'}}
+                <span class="fa fa-calendar" style="margin-right: 10px"></span>{{modal.data | date: 'dd MMM yyyy'}}
             </div>
 
-            <div class ="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px" >
+            <div class ="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px" ng-click="openTimePicker()">
                 <!-- <ion-datetime displayFormat="HH:mm"> </ion-datetime> -->
-                <span class="fa fa-clock-o" style="margin-right: 10px"></span>{{ora | date: 'hh:mm'}}
+                <span class="fa fa-clock-o" style="margin-right: 10px"></span>{{modal.ora | date: 'HH:mm'}}
             </div>
 
           </div>
 
           <div class="row">
             <div  class="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px; width: 50%" ng-click="setVisibile()">
-                <span class="fa fa-sitemap" style="margin-right: 10px"></span>{{cat}}
+                <span class="fa fa-sitemap" style="margin-right: 10px"></span>{{modal.cat}}
             </div>
             <div class ="col" style="width: 50%;font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px" >
-                <label class="fa fa-money-bill" ><input style="margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw; border: 0;" ng-model="importo" placeholder="{{0 | currency}}"/></label>
+                <label class="fa fa-money-bill" ><input style="margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw; border: 0;" ng-model="modal.totale" placeholder="{{0 | currency}}"/></label>
             </div>
 
           </div>
@@ -100,20 +100,22 @@
 
 
 
-            <div ng-if="tabTipoAttivo == 2" class="cd-timeline-content padding red">
-            	<h5 class="marginBottom0 marginTop0">{{nome}}</h5>
-            	<p class="marginTop5 cd-author">{{data | date: 'dd MMM yyyy'}}, {{ora | date: 'hh:mm'}}<span class="timelineText" style="float:right">{{importo | currency}}</span></p>
+            <div ng-if="modal.tabTipoAttivo == 2" class="cd-timeline-content padding red">
+              <h5 class="marginBottom0 marginTop0">{{modal.nome}}</h5>
+              <span class="cd-author">{{modal.data| date: 'dd MMM yyyy'}}</span>
+            	<p style="margin-top:0"class="cd-author"><span>{{modal.ora | date: 'HH:mm'}}</span><span class="timelineText" style="float:right">-{{modal.totale | currency}}</span></p>
 
             </div>
-            <div ng-if="tabTipoAttivo == 1" class="cd-timeline-content padding green">
-              <h5 class="marginBottom0 marginTop0">{{nome}}</h5>
-            	<p class="marginTop5 cd-author">{{data | date: 'dd MMM yyyy'}}, {{ora | date: 'hh:mm'}}<span class="timelineText" style="float:right">{{importo | currency}}</span></p>
+            <div ng-if="modal.tabTipoAttivo == 1" class="cd-timeline-content padding green">
+              <h5 class="marginBottom0 marginTop0">{{modal.nome}}</h5>
+              <span class="cd-author">{{modal.data| date: 'dd MMM yyyy'}}</span>
+            	<p style="margin-top:0"class="cd-author"><span>{{modal.ora | date: 'HH:mm'}}</span><span class="timelineText" style="float:right">+{{modal.totale | currency}}</span></p>
 
             </div>
 
           </div>
 
-            <button class="button button-full button-positive" ng-click="createContact(newUser)">Create</button>
+            <button class="button button-full button-positive" ng-click="creaMovimento()">Create</button>
           </div>
         </ion-content>
 </ion-modal-view>

@@ -1,6 +1,6 @@
 
 angular.module('starter.controllers')
-.controller('ProfiloCtrl', function($scope, $ionicLoading, $http, sharedProperties, $ionicModal, ionicDatePicker) {
+.controller('ProfiloCtrl', function($scope, $ionicLoading, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
     viewData.enableBack = false;
   });
@@ -33,32 +33,15 @@ angular.module('starter.controllers')
   d.setHours(0,0,0,0);
   var month = d.getMonth()+1;
   var anno = d.getFullYear();
-  getUser();
 
-
-
-  function getUser(){
-
-    var link = "http://portafoglio.altervista.org/getUserById.php";
-    $scope.utente = null;
-
-    // console.log($scope.id_utente);
-
-    $http.get(link,{
-      params: {
-        id_utente: $scope.id_utente
-      }
-    }).success(function(data){
-      if (data.utenti == undefined){
-        return
-      }
-      $scope.utente = data.utenti[0];
-      getMovimenti(month,"","");
-      // console.log($scope.utente);
-    }).catch(function(error){
-      console.log(error);
-    });
+  $scope.utente = {
+    id_utente: $scope.id_utente,
+    nome: sharedProperties.getNome(),
+    cognome: sharedProperties.getCognome(),
+    saldo: sharedProperties.getSaldo()
   }
+
+getMovimenti(month,"","");
 
   function getMovimenti(mese,settimana,giorno){
     var link = "http://portafoglio.altervista.org/getCronologia.php";
@@ -360,22 +343,24 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
   }
 
   //PARTE PER IL MODAL
-  $scope.tabTipoAttivo = 1;
-  var data = new Date();
-  // $scope.data = String(giorno + "/" + mese + "/" + anno);
-  $scope.data = data;
-  // $scope.ora = String(orario);
-  $scope.ora = data
-  $scope.cat = "Categoria"
-  //Formatto la stringa data per il db
-  $scope.importo = "";
-  $scope.nome = "";
+  // $scope.tabTipoAttivo = 1
+  // var data = new Date();
+  // // $scope.data = String(giorno + "/" + mese + "/" + anno);
+  // $scope.data = data;
+  // // $scope.ora = String(orario);
+  // $scope.ora = data
+  // $scope.cat = "Categoria"
+  // $scope.totale = 0;
+  // $scope.nome = "";
+  $scope.dataSet = false
+  $scope.modal = {};
 
+  //Creo date picker
     var ipObj1 = {
        callback: function (val) {  //Mandatory
          var da=new Date(val);
          da.setMinutes(da.getMinutes() - da.getTimezoneOffset());
-         $scope.data= da;
+         $scope.modal.data= da;
          console.log(da.getUTCDate());
          console.log(da.getUTCMonth() + 1);
        },
@@ -387,40 +372,113 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
        templateType: 'popup'       //Optional
      };
 
+     //Apro date picker
      $scope.openDatePicker = function(){
-       console.log("ok");
        ionicDatePicker.openDatePicker(ipObj1);
      };
+
+       //creo time picker
+     var ipObj2 = {
+        callback: function (val) {      //Mandatory
+          if (typeof (val) === 'undefined') {
+            console.log('Time not selected');
+          } else {
+            var selectedTime = new Date(val*1000);
+            selectedTime.setMinutes(selectedTime.getUTCMinutes());
+            selectedTime.setHours(selectedTime.getUTCHours());
+            $scope.dataSet = true;
+            $scope.modal.ora = selectedTime;
+            console.log($scope.modal.ora);
+          }
+        },
+        // inputTime: 50400,   //Optional
+        format: 12,         //Optional
+        step: 1,           //Optional
+        setLabel: 'Set'    //Optional
+      };
+
+      //Apro time picker
+      $scope.openTimePicker = function(){
+        ionicTimePicker.openTimePicker(ipObj2);
+      };
+
+    //Funzione per ottenere i tipi
+     function getTipi(){
+       var link = "http://portafoglio.altervista.org/select.php";
+       $http.get(link,{
+         params: {
+           tabella: 'tipi'
+         }
+       }).then(function(response){
+         var a = response.data.tipi;
+         $scope.categorie = [];
+         var size = 3;
+         while (a.length > 0)
+         $scope.categorie.push(a.splice(0, size));
+         // console.log($scope.categorie);
+       }).catch(function(error){
+         console.log(error);
+       });
+   };
+
+
+
 
      $scope.showModal = function() {
        $ionicModal.fromTemplateUrl('templates/addmovimenti.html', {
          scope: $scope
        }).then(function(modal) {
-         $scope.modal = modal;
+         if ($scope.categorie == undefined) {
+            getTipi();
+         }
+         $scope.modalView = modal;
          var data = new Date();
-         $scope.data = data;
-         $scope.ora = data
-         $scope.cat = "Categoria"
-         $scope.importo = "";
-         $scope.nome = "";
-         $scope.modal.show();
+         $scope.modal.data = data;
+         $scope.modal.tabTipoAttivo = 1;
+         $scope.modal.ora = data;
+         $scope.modal.cat = "Categoria"
+         $scope.modal.nome = "";
+         $scope.modalView.show();
        });
      };
 
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
+      $scope.closeModal = function() {
+        $scope.modalView.hide();
+        $scope.modal.totale = 0;
+      };
 
- // Cleanup the modal when we're done with it!
-  $scope.$on('modal.hidden', function() {
-
-  });
 
      $scope.selezionaTipo=function(tab){
 
-       $scope.importo *= -1;
-       $scope.tabTipoAttivo = tab;
+       // $scope.modal.totale *= -1;
+       $scope.modal.tabTipoAttivo = tab;
 
+     }
+
+     $scope.creaMovimento=function(){
+       var tabella = 'entrate';
+       var importo = $scope.modal.totale;
+       if($scope.modal.tabTipoAttivo == 2){
+         importo  *= -1;
+         tabella = 'uscite';
+       };
+       console.log(importo);
+       var data = $scope.modal.data;
+       var ora = $scope.modal.ora;
+       var giorno = data.getUTCDate();
+       var mese = data.getUTCMonth()+1;
+       var anno = data.getUTCFullYear();
+       var oraDB = ora.getHours() + ":" + ora.getMinutes();
+
+       var dataDB = anno+"-"+mese+"-"+giorno + " " + oraDB + ":00";
+       console.log(dataDB);
+       var nome = $scope.modal.nome;
+       console.log(nome);
+       var id_tipo = 2;
+       var id_utente = $scope.id_utente;
+
+       var sql = "INSERT INTO " + tabella + "VALUES (NULL, "+", "+data +
+        ", " + importo + ", " + nome + ", " + id_tipo + ", " + id_utente+")";
      }
 
 });
