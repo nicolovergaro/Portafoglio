@@ -1,0 +1,28 @@
+<style>
+ion-tabs {
+ margin-bottom: constant(safe-area-inset-bottom); /* iOS 11.0 */
+ margin-bottom: env(safe-area-inset-bottom); /* iOS 11.2 */
+}
+</style>
+<ion-tabs class="tabs-icon-top tabs-color-active-positive" view-title="Cronologia Entrate">
+
+
+  <ion-tab title="Entrate" icon="ion-arrow-up-c balanced"  href="#/app/tabs/cronologiaEntrate">
+    <ion-nav-view name="tabs-cronologiaEntrate"></ion-nav-view>
+  </ion-tab>
+
+
+  <ion-tab title="Uscite" icon="ion-arrow-down-c assertive" href="#/app/tabs/cronologiaUscite">
+    <ion-nav-view name="tabs-cronologiaUscite"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Tutto" icon="ion-arrow-swap energized" href="#/app/tabs/cronologiaEU">
+    <ion-nav-view name="tabs-cronologiaEU"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Ricerca" icon="ion-search calm" href="#/app/tabs/ricerca">
+    <ion-nav-view name="tabs-ricerca"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>

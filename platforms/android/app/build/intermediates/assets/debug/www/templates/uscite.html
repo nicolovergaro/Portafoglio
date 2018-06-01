@@ -1,0 +1,126 @@
+<ion-view view-title="Uscite">
+  <ion-content>
+
+    <!--<div class="header">
+      <h1>Uscite</h1>
+    </div>-->
+
+  <ion-list>
+    <!--
+    <div class="form">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Nome</span>
+        <input type="text" placeholder="Mario" ng-model="nome">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Data</span>
+        <input type="datetime-local" ng-model="data">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Importo</span>
+        <input type="text" placeholder="$100" ng-model="importo">
+      </label>
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">id_Tipo</span>
+        <input type="text" placeholder="1...2...3" ng-model="id_tipo">
+      </label>
+    </div>
+    !-->
+
+    <!--
+    <form>
+    <br>
+    <div style="padding-bottom: 2%; width: 100%;">
+      <center>
+      <input style="border: 2px solid; width: 60%; border-radius: 7px;" type="text" placeholder="Nome" ng-model="nome"></input></center>
+    </div>
+
+    <div style="padding-bottom: 2%; width: 100%">
+      <center>
+      <input style="border: 2px solid; width:60%; border-radius: 7px;" type="number" placeholder="Importo" ng-model="importo"></input></center>
+    </div>
+
+    <div style="padding-bottom: 2%; width:100%;">
+      <center>
+      <input style="border: 2px solid; width:60%; border-radius: 7px;" type="datetime-local" placeholder="Inserisci la data" ng-model="data"></input></center>
+    </div>
+
+    <div style="padding-bottom: 2%; width: 100%">
+      <center>
+      <input style="border: 2px solid; width:60%; border-radius: 7px;" type="number" placeholder="Inserisci id_tipo" ng-model="id_tipo"></input></center>
+    </div>
+
+    <!--
+    <div style="padding-bottom: 2%; width: 100%">
+      <center>
+      <input style="border: 2px solid; width:60%; border-radius: 7px;" type="number" placeholder="Inserisci id_utente" ng-model="id_utente"></input></center>
+    </div>
+    !-->
+    <!--
+    </form>
+    !-->
+
+    <label class="item item-input">
+      <i class="icon ion-android-send placeholder-icon"></i>
+      <input type="text" placeholder="Nome" ng-model="nome" />
+    </label>
+
+    <label class="item item-input">
+      <i class="icon ion-social-euro placeholder-icon"></i>
+      <input type="number" placeholder="Importo" ng-model="importo" />
+    </label>
+
+    <label class="item item-input">
+      <i class="icon ion-calendar placeholder-icon"></i>
+      <input type="datetime-local" placeholder="Data" ng-model="data" />
+    </label>
+
+    <label class="item item-input">
+      <i class="icon ion-navicon-round placeholder-icon"></i>
+      <select ng-model="id_tipo" style="margin: 5.2px" style="border: 5px">
+        <option ng-repeat="uscita in uscite | orderBy: 'tipo'" value="{{uscita.id_tipo}}" >{{uscita.tipo}}</option>
+      </select>
+    </label>
+
+    <br>
+
+    <!--
+    <a href="http://portafoglio.altervista.org/insert.php?tabella=uscite&nome={{nome}}&data={{data}}&importo={{importo}}&id_tipo={{id_tipo}}">
+    <button ion-button class="button button-light"><h5><u> Aggiungi Uscita </u></h5></button ion-button>
+    </a>
+    !-->
+
+  <center>
+    <a href="http://portafoglio.altervista.org/insert.php?tabella=uscite&nome={{nome}}&importo={{importo}}&data={{data}}&id_tipo={{id_tipo}}&id_utente={{id_utente}}">
+      <button class="button button-block button-positive" style="width:50%" ng-click = "showPopup()">
+        Aggiungi Uscita
+      </button>
+    </a>
+  </center>
+
+    <br>
+    <br>
+
+    <!--
+    <hr>
+
+    <div class="lista">
+      <h3>Lista Uscite</h3>
+    </div>
+
+    <ion-item ng-repeat="uscita in uscite" href="#/app/playlists/{{uscita.id_uscita}}">
+      Nome : {{uscita.nome}}
+      <br>
+      DATA : {{uscita.data}}
+      <br>
+      $ {{uscita.importo}}
+      <br>
+      Tipo : {{uscita.id_tipo}}
+    </ion-item>
+   </ion-list>
+ -->
+  </ion-content>
+</ion-view>
