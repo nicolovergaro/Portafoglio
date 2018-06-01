@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicSideMenuDelegate, $state, sharedProperties) {
+.controller('AppCtrl', function($scope, $ionicModal, $ionicHistory, $timeout, $ionicSideMenuDelegate, $state, sharedProperties) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -30,6 +30,9 @@ angular.module('starter.controllers', [])
   $scope.logout = function() {
     localStorage.removeItem("username");
     localStorage.removeItem("password");
+    //Usato per cancellare la cache, per esempio se facevamo il logout
+    //ed entravamo con un altro utente rimaneva la vecchia cronologia
+    $ionicHistory.clearCache();
     $state.go('app.login', {}, {reload: true});
   }
 

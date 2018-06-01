@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker'])
+angular.module('starter', ['ionic', 'starter.controllers','ionic-datepicker','ionic-timepicker'])
 
 
 .run(function($ionicPlatform, $rootScope, $state) {
@@ -106,26 +106,6 @@ console.log(localStorage.getItem("username"), localStorage.getItem("password"));
       }
     }
   })
-
-  .state('app.entrate', {
-      url: '/entrate',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/entrate.html',
-          controller: 'EntrateCtrl'
-        }
-      }
-    })
-
-    .state('app.uscite', {
-        url: '/uscite',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/uscite.html',
-            controller: 'UsciteCtrl'
-          }
-        }
-      })
 
     .state('app.profilo', {
         url: '/profilo',

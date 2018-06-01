@@ -1,6 +1,6 @@
 
 angular.module('starter.controllers')
-.controller('ProfiloCtrl', function($scope, $ionicLoading, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
+.controller('ProfiloCtrl', function($scope, $ionicLoading, $state, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
     viewData.enableBack = false;
   });
@@ -63,6 +63,8 @@ getMovimenti(month,"","");
       }else{
         $scope.movimentiPresenti = false
       }
+
+      // console.log($scope.movimenti);
     }).catch(function(error){
       console.log(error);
     });
@@ -209,7 +211,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
     // appena trovo che entrate + uscite
     //è diverso da 0 vuol dire che sono presenti movimenti
     //setto a false appena cambio il tab
-    if(entrateTot + usciteTot != 0){
+    if(entrateTot != 0 || usciteTot != 0){
       $scope.movimentiPresenti = true
     }
 
@@ -262,7 +264,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
     entrateTot += entrate;
     usciteTot += uscite;
 
-    if(entrateTot + usciteTot != 0){
+    if(entrateTot != 0 || usciteTot != 0){
       $scope.movimentiPresenti = true
     }
 
@@ -314,7 +316,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
     // console.log(String(ora),entrate,uscite);
 
-    if(entrateTot + usciteTot != 0){
+    if(entrateTot != 0 || usciteTot != 0){
       $scope.movimentiPresenti = true
     }
 
@@ -449,20 +451,17 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
 
      $scope.selezionaTipo=function(tab){
-
-       // $scope.modal.totale *= -1;
        $scope.modal.tabTipoAttivo = tab;
-
      }
 
      $scope.creaMovimento=function(){
        var tabella = 'entrate';
-       var importo = $scope.modal.totale;
+       var importo = parseFloat($scope.modal.totale);
        if($scope.modal.tabTipoAttivo == 2){
          importo  *= -1;
          tabella = 'uscite';
        };
-       console.log(importo);
+
        var data = $scope.modal.data;
        var ora = $scope.modal.ora;
        var giorno = data.getUTCDate();
@@ -471,14 +470,41 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
        var oraDB = ora.getHours() + ":" + ora.getMinutes();
 
        var dataDB = anno+"-"+mese+"-"+giorno + " " + oraDB + ":00";
-       console.log(dataDB);
+       // console.log(dataDB);
        var nome = $scope.modal.nome;
-       console.log(nome);
+       // console.log(nome);
        var id_tipo = 2;
        var id_utente = $scope.id_utente;
+       // console.log(importo);
+       insertMovimento(tabella,dataDB,importo,nome,id_tipo,id_utente);
 
-       var sql = "INSERT INTO " + tabella + "VALUES (NULL, "+", "+data +
-        ", " + importo + ", " + nome + ", " + id_tipo + ", " + id_utente+")";
+       // var sql = "INSERT INTO " + tabella + "VALUES (NULL, "+", '"+dataDB +
+       //  "', " + importo + ", '" + nome + "', " + id_tipo + ", " + id_utente+")";
+       //
+       //  console.log(sql);
      }
+
+     //Funzione per ottenere i tipi
+      function insertMovimento(tabella,data,importo,nome,id_tipo,id_utente){
+        var link = "http://portafoglio.altervista.org/insert.php";
+        var fd = new FormData();
+        fd.append("tabella", tabella);
+        fd.append("data", data)
+        fd.append("importo", importo);
+        fd.append("nome", nome);
+        fd.append("id_tipo", id_tipo);
+        fd.append("id_utente", id_utente);
+
+        $http.post(link, fd, {
+            headers: {'Content-Type': undefined },
+            transformRequest: angular.identity
+        }).success(function(data){
+          console.log(data);
+        });
+
+        $scope.closeModal();
+        $ionicHistory.clearCache();
+        $state.go('app.profilo', {}, {reload: true});
+    };
 
 });
