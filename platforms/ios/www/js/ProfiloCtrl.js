@@ -44,7 +44,7 @@ angular.module('starter.controllers')
 getMovimenti(month,"","");
 
   function getMovimenti(mese,settimana,giorno){
-    var link = "http://portafoglio.altervista.org/getCronologia.php";
+    var link = "http://moneytrack.altervista.org/getCronologia.php";
     $scope.movimenti = null;
 
     $http.get(link,{
@@ -406,7 +406,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
     //Funzione per ottenere i tipi
      function getTipi(){
-       var link = "http://portafoglio.altervista.org/select.php";
+       var link = "http://moneytrack.altervista.org/select.php";
        $http.get(link,{
          params: {
            tabella: 'tipi'
@@ -486,7 +486,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
      //Funzione per ottenere i tipi
       function insertMovimento(tabella,data,importo,nome,id_tipo,id_utente){
-        var link = "http://portafoglio.altervista.org/insert.php";
+        var link = "http://moneytrack.altervista.org/insert.php";
         var fd = new FormData();
         fd.append("tabella", tabella);
         fd.append("data", data)

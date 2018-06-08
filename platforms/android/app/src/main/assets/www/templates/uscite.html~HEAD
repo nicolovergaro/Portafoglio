@@ -88,13 +88,13 @@
     <br>
 
     <!--
-    <a href="http://portafoglio.altervista.org/insert.php?tabella=uscite&nome={{nome}}&data={{data}}&importo={{importo}}&id_tipo={{id_tipo}}">
+    <a href="http://moneytrack.altervista.org/insert.php?tabella=uscite&nome={{nome}}&data={{data}}&importo={{importo}}&id_tipo={{id_tipo}}">
     <button ion-button class="button button-light"><h5><u> Aggiungi Uscita </u></h5></button ion-button>
     </a>
     !-->
 
   <center>
-    <a href="http://portafoglio.altervista.org/insert.php?tabella=uscite&nome={{nome}}&importo={{importo}}&data={{data}}&id_tipo={{id_tipo}}&id_utente={{id_utente}}">
+    <a href="http://moneytrack.altervista.org/insert.php?tabella=uscite&nome={{nome}}&importo={{importo}}&data={{data}}&id_tipo={{id_tipo}}&id_utente={{id_utente}}">
       <button class="button button-block button-positive" style="width:50%" ng-click = "showPopup()">
         Aggiungi Uscita
       </button>

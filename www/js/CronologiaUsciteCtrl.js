@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('CronologiaUsciteCtrl', function($scope, $http,$ionicPopup, sharedProperties) {
 $scope.id_utente = sharedProperties.getIdUtente();
-  var link = "http://portafoglio.altervista.org/select.php";
+  var link = "http://moneytrack.altervista.org/select.php";
   $scope.uscite = null;
 
   $http.get(link,{
@@ -17,7 +17,7 @@ $scope.id_utente = sharedProperties.getIdUtente();
   });
 
   function getLongData(){
-    var link = "http://portafoglio.altervista.org/select.php";
+    var link = "http://moneytrack.altervista.org/select.php";
     $scope.uscite = null;
 
     var d=[];

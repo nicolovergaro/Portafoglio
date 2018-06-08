@@ -6,8 +6,8 @@ angular.module('starter.controllers')
   $scope.inserisci = function(){
 
 
-    var link1 = "http://portafoglio.altervista.org/update.php";
-    var link2= "http://portafoglio.altervista.org/select.php";
+    var link1 = "http://moneytrack.altervista.org/update.php";
+    var link2= "http://moneytrack.altervista.org/select.php";
 
     $scope.entrate=null;
     $scope.importo = 0;
@@ -57,7 +57,7 @@ angular.module('starter.controllers')
 };
 //ritorna id_Tipo
 $scope.ritornaID=function(){
-  var link="http://portafoglio.altervista.org/select.php";
+  var link="http://moneytrack.altervista.org/select.php";
   $http.get(link,{
     params:{
       tabella:'tipi'
