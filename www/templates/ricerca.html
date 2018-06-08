@@ -17,51 +17,32 @@
 </style>
   <div >
     <div class="row">
-      <div  class="col" style="font-size: 4vw;border: solid 1px grey; color:grey; height:40px; margin-top:10px" ng-click="setVisibile()">
+      <div  class="col-50" style="font-size: 4vw;border: solid 1px grey; color:grey; height:40px; margin-top:10px" ng-click="setVisibile()">
           {{cat}}
       </div>
+
+      <div class="col">
+        <button class="button icon-left ion-close button-positive "style="width:90%" ng-click="azzera()">Azzera</button>
+      </div>
+
+    </div>
 
     </div>
 
     <div class="row">
 
-      <div class="col-50">
-
-        <div class="list">
-          <label class="item item-input item-select">
-            <div class="input-label">
-                Cerca
-            </div>
-            <select>
-                <option selected>Giorno</option>
-                <option >Settimana</option>
-                <option>Mese</option>
-              </select>
-          </label>
-        </div>
-
+      <div class="col-50" style="font-size: 4vw;border: solid 1px grey; color:grey; height:40px;margin-top:10px" ng-click="openDatePicker()">
+          {{data | date: 'dd MMM yyyy'}}
       </div>
 
-      <div class="col" style="font-size: 4vw;border: solid 1px grey; color:grey; height:40px;margin-top:10px;margin-left: 10px" ng-click="openDatePicker()">
-          {{data | date: 'dd MMM yyyy'}}
+      <div class="col" style="">
+        <button class="button icon-left ion-search button-positive" style="width:90%;margin: 0 auto" ng-click="carica()">Ricerca</button>
       </div>
 
     </div>
 
 
-<div class="row">
-  <div class="col" style="">
-    <button class="button icon-left ion-search button-positive" style="width:90%;margin: 0 auto" ng-click="carica()">Ricerca</button>
-  </div>
 
-  <div class="col">
-    <button class="button icon-left ion-close button-positive "style="width:90%" ng-click="azzera()">Azzera</button>
-  </div>
-
-</div>
-
-
-  </div>
 
 
 

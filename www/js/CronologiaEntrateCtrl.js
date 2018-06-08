@@ -1,5 +1,6 @@
 angular.module('starter.controllers')
-.controller('CronologiaEntrateCtrl', function($scope, $http, $ionicActionSheet, sharedProperties) {
+.controller('CronologiaEntrateCtrl', function($scope, $http,$ionicPopup, $ionicActionSheet, sharedProperties) {
+
   $scope.id_utente = sharedProperties.getIdUtente();
 var link = "http://portafoglio.altervista.org/select.php";
   $scope.entrate = null;
@@ -53,24 +54,24 @@ function getLongData(){
 }
 
 $scope.showMenu = function() {
-   // Show the action sheet, return true per nascondere, altrimenti false
-   var hideSheet = $ionicActionSheet.show({
+
+  catPopup = $ionicPopup.show({
+     templateUrl: "/templates/categoriePopup.html",
+     cssClass: 'categorie-popup',
+     title: "CIAO",
+     scope: $scope,
      buttons: [
-       { text: 'Modifica' },
-     ],
-     destructiveText: 'Elimina',
-     titleText: 'Modifica il movimento',
-     cancelText: 'Annulla',
-     cancel: function() {
-          return true
-        },
-     buttonClicked: function(index) {
-       console.log("Modifica");
-       // return true;
-     },
-     destructiveButtonClicked: function(){
-       console.log("Elimina");
-     }
+      { text: 'Annulla' , type: 'button_close'},
+      {
+      text: 'Elimina', type: 'button_close',
+      onTap: function() {
+
+           console.log("ciao");
+
+         }
+       },
+
+     ]
    });
 
  };

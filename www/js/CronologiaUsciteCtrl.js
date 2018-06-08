@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('CronologiaUsciteCtrl', function($scope, $http, sharedProperties) {
+.controller('CronologiaUsciteCtrl', function($scope, $http,$ionicPopup, sharedProperties) {
 $scope.id_utente = sharedProperties.getIdUtente();
   var link = "http://portafoglio.altervista.org/select.php";
   $scope.uscite = null;
@@ -51,6 +51,20 @@ $scope.id_utente = sharedProperties.getIdUtente();
 
 
   }
+
+  $scope.showMenu = function() {
+    catPopup = $ionicPopup.show({
+       templateUrl: "/templates/categoriePopup.html",
+       cssClass: 'categorie-popup',
+       title: "CIAO",
+       scope: $scope,
+       buttons: [
+        { text: 'Annulla' , type: 'button_close'},
+        {text: 'Elimina', type: 'button_close'},
+       ]
+     });
+
+   };
 
 
 })
