@@ -1,7 +1,7 @@
 angular.module('starter.controllers')
 .controller('CronologiaEUCtrl', function($scope, $http, sharedProperties) {
   $scope.id_utente = sharedProperties.getIdUtente();
-  var link = "http://portafoglio.altervista.org/getCronologia.php";
+  var link = "http://moneytrack.altervista.org/getCronologia.php";
   $scope.movimenti = null;
 
   $http.get(link,{
@@ -19,7 +19,7 @@ angular.module('starter.controllers')
   });
 
   function getLongData(){
-    var link = "http://portafoglio.altervista.org/getCronologia.php";
+    var link = "http://moneytrack.altervista.org/getCronologia.php";
     $scope.movimenti = null;
 
     var d=[];

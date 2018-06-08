@@ -39,7 +39,7 @@ angular.module('starter.controllers')
 
   function getUser(){
 
-    var link = "http://portafoglio.altervista.org/getUserById.php";
+    var link = "http://moneytrack.altervista.org/getUserById.php";
     $scope.utente = null;
 
     // console.log($scope.id_utente);
@@ -61,7 +61,7 @@ angular.module('starter.controllers')
   }
 
   function getMovimenti(mese,settimana,giorno){
-    var link = "http://portafoglio.altervista.org/getCronologia.php";
+    var link = "http://moneytrack.altervista.org/getCronologia.php";
     $scope.movimenti = null;
 
     $http.get(link,{

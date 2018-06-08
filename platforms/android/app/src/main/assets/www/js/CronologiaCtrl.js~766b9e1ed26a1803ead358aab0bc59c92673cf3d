@@ -1,7 +1,7 @@
 
 angular.module('starter.controllers')
 .controller('CronologiaCtrl', function($scope, $http) {
-  var link = "http://portafoglio.altervista.org/select.php";
+  var link = "http://moneytrack.altervista.org/select.php";
   $scope.entrate = null;
 
   $http.get(link,{

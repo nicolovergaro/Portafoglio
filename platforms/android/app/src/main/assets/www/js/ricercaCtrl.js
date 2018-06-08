@@ -1,9 +1,9 @@
 
 angular.module('starter.controllers')
 .controller('ricercaCtrl', function($scope, $http, ionicDatePicker) {
-  var link = "http://portafoglio.altervista.org/select.php";
-  var link1 = "http://portafoglio.altervista.org/ricercaPerTipo.php";
-  var link2 = "http://portafoglio.altervista.org/getCronologia.php";
+  var link = "http://moneytrack.altervista.org/select.php";
+  var link1 = "http://moneytrack.altervista.org/ricercaPerTipo.php";
+  var link2 = "http://moneytrack.altervista.org/getCronologia.php";
   $scope.categorie = null;
   $scope.visibile="none";
   $scope.cat="Ricerca per categoria...";

@@ -1,7 +1,7 @@
 angular.module('starter')
     .factory('utils', ['$http', function($http) {
 
-    var urlBase = 'http://portafoglio.altervista.org/';
+    var urlBase = 'http://moneytrack.altervista.org/';
 
     this.getIdByUserAndPsw = function (username, password) {
       var params = {
