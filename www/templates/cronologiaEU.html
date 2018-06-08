@@ -18,7 +18,7 @@
             <div ng-if="movimento.importo<0" class="cd-timeline-content padding red">
               <h5 class="marginBottom0 marginTop0">{{movimento.nome}}</h5>
               <span class="cd-author">{{movimento.data}}</span>
-            	<p style="margin-top:0"class="cd-author"><span>{{movimento.ora}}</span><span class="timelineText" style="float:right">+{{movimento.importo | currency}}</span></p>
+            	<p style="margin-top:0"class="cd-author"><span>{{movimento.ora}}</span><span class="timelineText" style="float:right">{{movimento.importo | currency}}</span></p>
 
             </div>
             <div ng-if="movimento.importo>0" class="cd-timeline-content padding green">

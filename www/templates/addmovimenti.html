@@ -60,7 +60,7 @@
                 <span class="input-label">Nome</span>
                 <input type="text" placeholder="John">
               </label> -->
-                <span class="fa fa-tag" ><input maxlength='40' size='40' style="margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw; border: 0" ng-model="modal.nome"  placeholder="Nome"/></span>
+                <span class="fa fa-tag" ><input type="text" maxlength='40' size='40' style="color:grey;margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw; border: 0" ng-model="modal.nome"  placeholder="Nome"/></span>
             </div>
 
 
@@ -78,11 +78,11 @@
           </div>
 
           <div class="row">
-            <div  class="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px; width: 50%" ng-click="setVisibile()">
-                <span class="fa fa-sitemap" style="margin-right: 10px"></span>{{modal.cat}}
+            <div  class="col" style="font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px; width: 50%" ng-click="showCategories()">
+                <span class="fa fa-sitemap" style="margin-right: 10px"></span>{{modal.cat.tipo}}
             </div>
             <div class ="col" style="width: 50%;font-size: 4.5vw; border-bottom: solid 1px grey; color:grey; height:40px;margin-top: 20px" >
-                <label class="fa fa-money-bill" ><input style="margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw; border: 0;" ng-model="modal.totale" placeholder="{{0 | currency}}"/></label>
+                <label class="fa fa-money-bill" ><input style="margin-left: 10px;border-bottom: solid 1px grey;font-size: 4.5vw;color:grey; border: 0;" ng-model="modal.totale" placeholder="{{0 | currency}}"/></label>
             </div>
 
           </div>
@@ -90,14 +90,13 @@
           <div class="cd-timeline-block">
 
             <!--  Categoria -->
-            <!-- <div ng-if="tabTipoAttivo == 2" class="cd-timeline-icon text-center red"  >
-              <i class="{{movimento.descrizione}}" style="font-size:30px" ></i>
+            <div ng-if="modal.tabTipoAttivo == 2" class="cd-timeline-icon text-center red"  >
+              <i class="{{modal.cat.descrizione}}" style="font-size:30px" ></i>
             </div>
 
-            <div ng-if="tabTipoAttivo == 1" class="cd-timeline-icon text-center green"  >
-              <i class="{{movimento.descrizione}}" style="font-size:30px" ></i>
-            </div> -->
-
+            <div ng-if="modal.tabTipoAttivo == 1" class="cd-timeline-icon text-center green"  >
+              <i class="{{modal.cat.descrizione}}" style="font-size:30px" ></i>
+            </div>
 
 
             <div ng-if="modal.tabTipoAttivo == 2" class="cd-timeline-content padding red">

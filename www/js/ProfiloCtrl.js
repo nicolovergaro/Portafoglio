@@ -1,6 +1,6 @@
 
 angular.module('starter.controllers')
-.controller('ProfiloCtrl', function($scope, $ionicLoading, $state, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
+.controller('ProfiloCtrl', function($scope, $ionicPopup, $ionicLoading, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
     viewData.enableBack = false;
   });
@@ -356,6 +356,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
   // $scope.nome = "";
   $scope.dataSet = false
   $scope.modal = {};
+  $scope.modal.cat = {};
 
   //Creo date picker
     var ipObj1 = {
@@ -378,7 +379,6 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
      $scope.openDatePicker = function(){
        ionicDatePicker.openDatePicker(ipObj1);
      };
-
        //creo time picker
      var ipObj2 = {
         callback: function (val) {      //Mandatory
@@ -393,7 +393,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
             console.log($scope.modal.ora);
           }
         },
-        // inputTime: 50400,   //Optional
+        inputTime: (((new Date()).getHours() * 60 * 60) + ((new Date()).getMinutes() * 60)),
         format: 12,         //Optional
         step: 1,           //Optional
         setLabel: 'Set'    //Optional
@@ -412,11 +412,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
            tabella: 'tipi'
          }
        }).then(function(response){
-         var a = response.data.tipi;
-         $scope.categorie = [];
-         var size = 3;
-         while (a.length > 0)
-         $scope.categorie.push(a.splice(0, size));
+         $scope.categorieMovimenti = response.data.tipi;
          // console.log($scope.categorie);
        }).catch(function(error){
          console.log(error);
@@ -430,15 +426,16 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
        $ionicModal.fromTemplateUrl('templates/addmovimenti.html', {
          scope: $scope
        }).then(function(modal) {
-         if ($scope.categorie == undefined) {
+         if ($scope.categorieMovimenti == undefined) {
             getTipi();
          }
          $scope.modalView = modal;
          var data = new Date();
          $scope.modal.data = data;
+         $scope.modal.dataSecondi = data.getTime();
          $scope.modal.tabTipoAttivo = 1;
          $scope.modal.ora = data;
-         $scope.modal.cat = "Categoria"
+         $scope.modal.cat.tipo = "Categoria"
          $scope.modal.nome = "";
          $scope.modalView.show();
        });
@@ -446,12 +443,33 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
       $scope.closeModal = function() {
         $scope.modalView.hide();
-        $scope.modal.totale = 0;
+        $scope.modal.totale = null;
       };
 
 
      $scope.selezionaTipo=function(tab){
        $scope.modal.tabTipoAttivo = tab;
+     }
+
+     var catPopup;
+
+     $scope.showCategories = function(){
+       catPopup = $ionicPopup.show({
+          templateUrl: "/templates/categoriePopup.html",
+          cssClass: 'categorie-popup',
+          title: $scope.modal.cat,
+          scope: $scope,
+          buttons: [
+           { text: 'Annulla' , type: 'button_close'},
+           // {text: 'Seleziona', type: 'button-close'}
+          ]
+        });
+     }
+
+     $scope.selectCategory = function(item){
+       catPopup.close();
+       $scope.modal.cat = item;
+       console.log($scope.modal.cat);
      }
 
      $scope.creaMovimento=function(){
@@ -473,7 +491,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
        // console.log(dataDB);
        var nome = $scope.modal.nome;
        // console.log(nome);
-       var id_tipo = 2;
+       var id_tipo = $scope.modal.cat.id_tipo;
        var id_utente = $scope.id_utente;
        // console.log(importo);
        insertMovimento(tabella,dataDB,importo,nome,id_tipo,id_utente);
@@ -500,11 +518,14 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
             transformRequest: angular.identity
         }).success(function(data){
           console.log(data);
+          // sharedProperties.setSaldo(sharedProperties.getSaldo() + importo)
+          $scope.closeModal();
+          // $ionicHistory.clearCache();
+          // $state.go('app.profilo', {}, {reload: true});
+          $window.location.reload();
         });
 
-        $scope.closeModal();
-        $ionicHistory.clearCache();
-        $state.go('app.profilo', {}, {reload: true});
+
     };
 
 });

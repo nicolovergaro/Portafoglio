@@ -48,6 +48,10 @@ angular.module('starter.controllers')
       document.getElementById('photo').files[0]
     ).success(function(data){
 
+      console.log("Creato con successo");
+
+      console.log(data);
+
       var id = data.id_utente;
 
       sharedProperties.setIdUtente(data.id_utente);
