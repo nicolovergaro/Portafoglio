@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('CronologiaEntrateCtrl', function($scope, $http,$ionicPopup, $ionicActionSheet, sharedProperties) {
+.controller('CronologiaEntrateCtrl', function($scope, $http,$ionicPopup, $window, $ionicActionSheet, sharedProperties) {
 
   $scope.id_utente = sharedProperties.getIdUtente();
 var link = "http://moneytrack.altervista.org/select.php";
@@ -53,12 +53,12 @@ function getLongData(){
 
 }
 
-$scope.showMenu = function() {
+$scope.showMenu = function(id) {
 
   catPopup = $ionicPopup.show({
      templateUrl: "/templates/categoriePopup.html",
      cssClass: 'categorie-popup',
-     title: "CIAO",
+     title: "",
      scope: $scope,
      buttons: [
       { text: 'Annulla' , type: 'button_close'},
@@ -66,8 +66,20 @@ $scope.showMenu = function() {
       text: 'Elimina', type: 'button_close',
       onTap: function() {
 
-           console.log("ciao");
+        var link = "http://moneytrack.altervista.org/delete.php";
+        var fd = new FormData();
+        fd.append("tabella", "entrate");
+        fd.append("id_entrata", id);
 
+
+        $http.post(link, fd, {
+            headers: {'Content-Type': undefined },
+            transformRequest: angular.identity
+        }).success(function(data){
+          console.log(data);
+
+          $window.location.reload();
+        });
          }
        },
 

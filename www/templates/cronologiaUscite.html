@@ -9,7 +9,7 @@
               <i class="{{uscita.descrizione}}" style="font-size:30px" ></i>
             </div>
 
-            <div class="cd-timeline-content padding red">
+            <div class="cd-timeline-content padding red" ng-click="showMenu({{uscita.id_uscita}})">
               <h5 class="marginBottom0 marginTop0">{{uscita.nome}}</h5>
               <span class="cd-author">{{uscita.data}}</span>
             	<p style="margin-top:0"class="cd-author"><span>{{uscita.ora}}</span><span class="timelineText" style="float:right">{{uscita.importo | currency}}</span></p>

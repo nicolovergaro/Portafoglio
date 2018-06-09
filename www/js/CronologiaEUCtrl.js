@@ -1,5 +1,5 @@
 angular.module('starter.controllers')
-.controller('CronologiaEUCtrl', function($scope, $http,$ionicPopup, sharedProperties) {
+.controller('CronologiaEUCtrl', function($scope, $http,$ionicPopup,$window, sharedProperties) {
   $scope.id_utente = sharedProperties.getIdUtente();
   var link = "http://moneytrack.altervista.org/getCronologia.php";
   $scope.movimenti = null;
@@ -46,6 +46,7 @@ angular.module('starter.controllers')
         $scope.movimenti[i].data=data;
         $scope.movimenti[i].ora=ora;
 
+
       }
 
     }).catch(function(error){
@@ -57,15 +58,36 @@ angular.module('starter.controllers')
 
 
 
-  $scope.showMenu = function() {
+  $scope.showMenu = function(id,tabella) {
+
     catPopup = $ionicPopup.show({
        templateUrl: "/templates/categoriePopup.html",
        cssClass: 'categorie-popup',
-       title: "CIAO",
+       title: "",
        scope: $scope,
        buttons: [
         { text: 'Annulla' , type: 'button_close'},
-        {text: 'Elimina', type: 'button_close'},
+        {
+        text: 'Elimina', type: 'button_close',
+        onTap: function() {
+
+          var link = "http://moneytrack.altervista.org/delete.php";
+          var fd = new FormData();
+          fd.append("tabella", tabella);
+          fd.append("id_uscita", id);
+
+
+          $http.post(link, fd, {
+              headers: {'Content-Type': undefined },
+              transformRequest: angular.identity
+          }).success(function(data){
+            console.log(data);
+
+            $window.location.reload();
+          });
+           }
+         },
+
        ]
      });
 
