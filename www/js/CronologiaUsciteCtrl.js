@@ -1,5 +1,13 @@
 angular.module('starter.controllers')
-.controller('CronologiaUsciteCtrl', function($scope, $http,$ionicPopup,$window, sharedProperties) {
+.controller('CronologiaUsciteCtrl', function($scope, $http,$ionicPopup,$window, $rootScope, sharedProperties) {
+  $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+    if ($rootScope.eliminati != []) {
+      for (var i = 0; i < $rootScope.eliminati.length; i++) {
+        cancellaMovimento($rootScope.eliminati[i])
+      }
+    }
+  });
+$rootScope.eliminati = [];
 $scope.id_utente = sharedProperties.getIdUtente();
   var link = "http://moneytrack.altervista.org/select.php";
   $scope.uscite = null;
@@ -52,6 +60,14 @@ $scope.id_utente = sharedProperties.getIdUtente();
 
   }
 
+  function cancellaMovimento(id){
+    for (var i = 0; i < $scope.uscite.length; i++) {
+      if ($scope.uscite[i].id_uscita == id) {
+        $scope.uscite.splice(i, 1);
+      }
+    }
+  }
+
   $scope.showMenu = function(id) {
 
     catPopup = $ionicPopup.show({
@@ -76,8 +92,10 @@ $scope.id_utente = sharedProperties.getIdUtente();
               transformRequest: angular.identity
           }).success(function(data){
             console.log(data);
+            cancellaMovimento(id)
+            $rootScope.eliminati.push(id);
 
-            $window.location.reload();
+
           });
            }
          },

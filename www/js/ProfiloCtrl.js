@@ -243,7 +243,8 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
     var giorni = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     var movimenti = $scope.movimenti
-    // console.log(movimenti);
+    // console.log(new Date((movimenti[0].data).replace(/-/g, "/")) >= firstday);
+    // console.log(new Date((movimenti[0].data).replace(/-/g, "/")) <= lastday);
     var entrate = 0;
     var uscite = 0;
 

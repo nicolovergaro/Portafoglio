@@ -1,5 +1,13 @@
 angular.module('starter.controllers')
-.controller('CronologiaEUCtrl', function($scope, $http,$ionicPopup,$window, sharedProperties) {
+.controller('CronologiaEUCtrl', function($scope, $rootScope, $http,$ionicPopup,$window, sharedProperties) {
+  $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+    if ($rootScope.eliminati != []) {
+      for (var i = 0; i < $rootScope.eliminati.length; i++) {
+        cancellaMovimento($rootScope.eliminati[i])
+      }
+    }
+  });
+  $rootScope.eliminati = [];
   $scope.id_utente = sharedProperties.getIdUtente();
   var link = "http://moneytrack.altervista.org/getCronologia.php";
   $scope.movimenti = null;
@@ -7,8 +15,6 @@ angular.module('starter.controllers')
   $http.get(link,{
     params: {
       id_utente: $scope.id_utente
-
-
     }
   }).then(function(response){
     $scope.movimenti = response.data.movimenti;
@@ -56,7 +62,14 @@ angular.module('starter.controllers')
 
   }
 
-
+  function cancellaMovimento(id){
+    for (var i = 0; i < $scope.movimenti.length; i++) {
+      if ($scope.movimenti[i].id_entrata == id) {
+        console.log(id);
+        $scope.movimenti.splice(i, 1);
+      }
+    }
+  }
 
   $scope.showMenu = function(id,tabella) {
 
@@ -82,8 +95,10 @@ angular.module('starter.controllers')
               transformRequest: angular.identity
           }).success(function(data){
             console.log(data);
+            cancellaMovimento(id)
+            $rootScope.eliminati.push(id);
 
-            $window.location.reload();
+
           });
            }
          },
