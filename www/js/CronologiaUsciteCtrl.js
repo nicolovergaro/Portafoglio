@@ -18,8 +18,13 @@ $scope.id_utente = sharedProperties.getIdUtente();
       id_utente: $scope.id_utente
     }
   }).then(function(response){
-    $scope.uscite = response.data.uscite;
-    getLongData();
+    if (response.data.entrate != undefined) {
+      $scope.uscite = response.data.uscite;
+      getLongData();
+      $scope.trovato = true
+    }else{
+      $scope.trovato = false
+    }
   }).catch(function(error){
     console.log(error);
   });

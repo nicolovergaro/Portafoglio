@@ -1,5 +1,6 @@
 <ion-view view-title="Uscite" >
   <ion-content class="padding" >
+    <div ng-if="trovato==true">
       <section id="cd-timeline" class="cd-container">
         <div ng-repeat="uscita in uscite" >
 
@@ -18,8 +19,11 @@
 
             </div>
           </div>
-        </div>
       </section>
+    </div>
+      <div class = "empty-data" ng-if="trovato==false">
+        <img  src="img/nomovimenti.png" style="width: 80%; height: 80%"/>
+      </div>
   </ion-content>
 
 
