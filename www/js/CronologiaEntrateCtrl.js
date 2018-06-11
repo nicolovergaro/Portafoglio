@@ -41,7 +41,8 @@ function getLongData(){
     }
   }).then(function(response){
     $scope.entrate = response.data.entrate;
-    for (var i = 0; i < $scope.entrate.length; i++) {
+    var dim=$scope.entrate.length;
+    for (var i = 0; i < dim; i++) {
       d[i]=$scope.entrate[i].data.substring(0, 10);
       o[i]=$scope.entrate[i].data.substring(11, 16);
       var parts = d[i].split("-"),
