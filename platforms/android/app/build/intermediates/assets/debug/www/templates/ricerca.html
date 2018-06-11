@@ -1,0 +1,103 @@
+<ion-view view-title="Ricerca" >
+
+
+
+    <ion-content style="padding-top:30px" >
+<style>
+
+.icon1 {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+
+}
+</style>
+  <div >
+    <div class="row">
+      <div  class="col-50" style="font-size: 4vw;border: solid 1px grey; color:grey; height:40px; margin-top:10px" ng-click="setVisibile()">
+          {{cat}}
+      </div>
+
+      <div class="col">
+        <button class="button icon-left ion-close button-positive "style="width:90%" ng-click="azzera()">Azzera</button>
+      </div>
+
+    </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-50" style="font-size: 4vw;border: solid 1px grey; color:grey; height:40px;margin-top:10px" ng-click="openDatePicker()">
+          {{data | date: 'dd MMM yyyy'}}
+      </div>
+
+      <div class="col" style="">
+        <button class="button icon-left ion-search button-positive" style="width:90%;margin: 0 auto" ng-click="carica()">Ricerca</button>
+      </div>
+
+    </div>
+
+        <div  style="display:{{visibile}}; scrollX:true">
+          <div class="row" ng-repeat="sottocategoria in categorie">
+            <div class="col-33" ng-repeat="categoria in sottocategoria" >
+              <button class="button" style="width:95%;margin:5px"  ng-click="selezionaCat(categoria.tipo,categoria.id_tipo)">
+                <i  class="icon1 {{categoria.descrizione}} " style="font-size:11vw"></i>
+                <br>
+                <span style="font-size:3vw;white-space:nowrap ">
+                  {{categoria.tipo}}
+                </span>
+
+              </button>
+
+            </div>
+          </div>
+        </div>
+
+
+
+        <div ng-if = "trovato==true">
+
+
+        <section id="cd-timeline" class="cd-container">
+          <div ng-repeat="movimento in movimenti" >
+
+            <div class="cd-timeline-block">
+
+              <div ng-if="movimento.importo<0" class="cd-timeline-icon text-center red"  >
+                <i class="{{movimento.descrizione}}" style="font-size:28px" ></i>
+              </div>
+
+              <div ng-if="movimento.importo>0" class="cd-timeline-icon text-center green"  >
+                <i class="{{movimento.descrizione}}" style="font-size:28px" ></i>
+              </div>
+
+
+
+              <div ng-if="movimento.importo<0" class="cd-timeline-content padding red">
+                <h5 class="marginBottom0 marginTop0">{{movimento.nome}}</h5>
+                <p class="marginTop5 cd-author">{{movimento.data}}<span class="timelineText" style="float:right">{{movimento.importo | currency}}</span></p>
+
+              </div>
+              <div ng-if="movimento.importo>0" class="cd-timeline-content padding green">
+                <h5 class="marginBottom0 marginTop0">{{movimento.nome}}</h5>
+                <p class="marginTop5 cd-author">{{movimento.data}}<span class="timelineText" style="float:right">{{movimento.importo | currency}}</span></p>
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class = "empty-data" ng-if="trovato==false">
+        <img  src="img/noresults.png" style="width: 80%; height: 80%"/>
+        <!-- <span> Non possiamo creare la tua dashboard per questo periodo, aggiungi movimenti </span> -->
+      </div>
+
+
+
+  </ion-content>
+</ion-view>
