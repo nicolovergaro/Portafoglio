@@ -1,0 +1,19 @@
+/* Empty. Add your own CSS if you like */
+.empty-data img{
+width:50%;
+height:60%;
+display: block;
+margin: 0 auto;
+margin-top: 10%
+}
+
+.empty-data span{
+
+text-align: center;
+color: #BBB;
+font-size: 8vw;
+line-height: 8vw;
+font-weight: 400;
+margin-top: 20%;
+display: table;
+}
