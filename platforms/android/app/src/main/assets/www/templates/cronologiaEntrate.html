@@ -1,6 +1,7 @@
 <ion-view view-title="Entrate" >
   <ion-content class="padding" >
-      <section id="cd-timeline" class="cd-container">
+    <div ng-if="trovato==true">
+        <section id="cd-timeline" class="cd-container">
         <div ng-repeat="entrata in entrate" >
 
           <div class="cd-timeline-block">
@@ -9,14 +10,19 @@
               <i class="{{entrata.descrizione}}" style="font-size:30px" ></i>
             </div>
 
-            <div class="cd-timeline-content padding green">
+            <div class="cd-timeline-content padding green" ng-click="showMenu({{entrata.id_entrata}})">
             	<h5 class="marginBottom0 marginTop0">{{entrata.nome}}</h5>
-            	<p class="marginTop5 cd-author">{{entrata.data}}<span class="timelineText" style="float:right">+{{entrata.importo | currency}}</span></p>
+              <span class="cd-author">{{entrata.data}}</span>
+            	<p style="margin-top:0"class="cd-author"><span>{{entrata.ora}}</span><span class="timelineText" style="float:right">{{entrata.importo | currency}}</span></p>
 
             </div>
           </div>
         </div>
       </section>
+    </div>
+      <div class = "empty-data" ng-if="trovato==false">
+        <img  src="img/nomovimenti.png" style="width: 80%; height: 80%"/>
+      </div>
   </ion-content>
 
 
