@@ -64,7 +64,7 @@ angular.module('starter.controllers')
   $scope.showMenu = function(id,tabella) {
 
     catPopup = $ionicPopup.show({
-       templateUrl: "/templates/categoriePopup.html",
+       templateUrl: "/templates/eliminaPopup.html",
        cssClass: 'categorie-popup',
        title: "",
        scope: $scope,

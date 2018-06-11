@@ -1,5 +1,6 @@
 <ion-view view-title="Uscite" >
   <ion-content class="padding" >
+    <div ng-if="trovato==true">
       <section id="cd-timeline" class="cd-container">
         <div ng-repeat="uscita in uscite" >
 
@@ -9,14 +10,20 @@
               <i class="{{uscita.descrizione}}" style="font-size:30px" ></i>
             </div>
 
-            <div class="cd-timeline-content padding red">
-            	<h5 class="marginBottom0 marginTop0">{{uscita.nome}}</h5>
-            	<p class="marginTop5 cd-author">{{uscita.data}}<span class="timelineText" style="float:right">{{uscita.importo | currency}}</span></p>
+            <div class="cd-timeline-content padding red" ng-click="showMenu({{uscita.id_uscita}})">
+              <h5 class="marginBottom0 marginTop0">{{uscita.nome}}</h5>
+              <span class="cd-author">{{uscita.data}}</span>
+            	<p style="margin-top:0"class="cd-author"><span>{{uscita.ora}}</span><span class="timelineText" style="float:right">{{uscita.importo | currency}}</span></p>
+
+            </div>
 
             </div>
           </div>
-        </div>
       </section>
+    </div>
+      <div class = "empty-data" ng-if="trovato==false">
+        <img  src="img/nomovimenti.png" style="width: 80%; height: 80%"/>
+      </div>
   </ion-content>
 
 

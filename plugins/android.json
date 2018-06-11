@@ -1,31 +1,4 @@
 {
-<<<<<<< HEAD
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {}
-  },
-  "installed_plugins": {
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
-    },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
-    },
-    "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
-    }
-  },
-  "dependent_plugins": {}
-=======
     "prepare_queue": {
         "installed": [],
         "uninstalled": []
@@ -51,5 +24,4 @@
         }
     },
     "dependent_plugins": {}
->>>>>>> 766b9e1ed26a1803ead358aab0bc59c92673cf3d
 }

@@ -1,6 +1,6 @@
 
 angular.module('starter.controllers')
-.controller('ricercaCtrl', function($scope, $http, ionicDatePicker) {
+.controller('ricercaCtrl', function($scope, $http, ionicDatePicker, $ionicScrollDelegate, sharedProperties) {
   var link = "http://moneytrack.altervista.org/select.php";
   var link1 = "http://moneytrack.altervista.org/ricercaPerTipo.php";
   var link2 = "http://moneytrack.altervista.org/getCronologia.php";
@@ -10,6 +10,9 @@ angular.module('starter.controllers')
   $scope.data="Ricerca per data...";
   var d=[];
   var o=[];
+
+  $scope.id_utente = sharedProperties.getIdUtente();
+
 
   $http.get(link,{
     params: {
@@ -43,7 +46,7 @@ angular.module('starter.controllers')
 
     $http.get(link2,{
       params: {
-        id_utente:1,
+        id_utente:$scope.id_utente,
         anno:  $scope.data.getFullYear(),
         mese: $scope.data.getUTCMonth()+1,
         giorno: $scope.data.getUTCDate()
@@ -77,7 +80,7 @@ angular.module('starter.controllers')
 
       $http.get(link1,{
         params: {
-          id_utente:1,
+          id_utente:$scope.id_utente,
           id_tipo: $scope.id_tipo
 
 
@@ -109,7 +112,7 @@ angular.module('starter.controllers')
   }else{
     $http.get(link1,{
       params: {
-        id_utente:1,
+        id_utente:$scope.id_utente,
         id_tipo: $scope.id_tipo
 
 
@@ -152,18 +155,40 @@ angular.module('starter.controllers')
 
   var ipObj1 = {
      callback: function (val) {  //Mandatory
-       var da=new Date(val);
-       da.setMinutes(da.getMinutes() - da.getTimezoneOffset());
+       if (typeof val === 'number') {
+         //La data è un solo numero, quindi la ricerca va fatta su un solo giorno
+         var da = new Date(val);
+         da.setMinutes(da.getMinutes() - da.getTimezoneOffset());
+         var dataScelta = da;
+       }else{
+       //la data è un periodo, la ricerca va fatta su più giorni
+        var start = new Date(val['start']);
+        start.setMinutes(start.getMinutes() - start.getTimezoneOffset());
+        var end = new Date(val['end']);
+        end.setMinutes(end.getMinutes() - end.getTimezoneOffset());
+        var dateScelte = [start, end]
+       }
+
+       if (dateScelte) {
+         for (var index=0;index<2; index++) {
+           console.log(dateScelte[index].getUTCDate());
+           console.log(dateScelte[index].getUTCMonth() + 1);
+         }
+       }else{
+         console.log(dataScelta.getUTCDate());
+         console.log(dataScelta.getUTCMonth() + 1);
+       }
+
+
        $scope.data= da;
-       console.log(da.getUTCDate());
-       console.log(da.getUTCMonth() + 1);
+
      },
      disabledDates: [],
      dateFormat: 'dd MMMM yyyy',
-     //inputDate: new Date(),      //Optional
      mondayFirst: false,          //Optional
      closeOnSelect: false,       //Optional
-     templateType: 'popup'       //Optional
+     templateType: 'popup',
+     selectMode: 'day'      //Optional
    };
 
    $scope.openDatePicker = function(){
@@ -187,7 +212,7 @@ angular.module('starter.controllers')
     $scope.id_tipo=id_tipo;
     if($scope.visibile=='block'){
       $scope.visibile='none';
-
+      $ionicScrollDelegate.scrollTop();
     }
   }
 
@@ -196,6 +221,7 @@ angular.module('starter.controllers')
     $scope.data="Ricerca per data...";
     $scope.movimenti = null;
     $scope.trovato = null;
+    $scope.visibile = 'none';
   }
 
 

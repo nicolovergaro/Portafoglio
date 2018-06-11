@@ -1,30 +1,4 @@
 {
-<<<<<<< HEAD
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {
-      "res/xml/config.xml": {
-        "parents": {
-          "/*": [
-            {
-              "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"io.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-=======
     "prepare_queue": {
         "installed": [],
         "uninstalled": []
@@ -52,58 +26,9 @@
                         }
                     ]
                 }
->>>>>>> 766b9e1ed26a1803ead358aab0bc59c92673cf3d
             }
-          ]
         }
-      }
-    }
-  },
-  "installed_plugins": {
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
     },
-<<<<<<< HEAD
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
-    },
-    "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "com.vergarotoma.wallet"
-    }
-  },
-  "dependent_plugins": {},
-  "modules": [
-    {
-      "id": "cordova-plugin-device.device",
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "pluginId": "cordova-plugin-device",
-      "clobbers": [
-        "device"
-      ]
-    },
-    {
-      "id": "cordova-plugin-splashscreen.SplashScreen",
-      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-      "pluginId": "cordova-plugin-splashscreen",
-      "clobbers": [
-        "navigator.splashscreen"
-      ]
-    },
-    {
-      "id": "ionic-plugin-keyboard.keyboard",
-      "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
-      "pluginId": "ionic-plugin-keyboard",
-      "clobbers": [
-        "cordova.plugins.Keyboard"
-      ],
-      "runs": true
-=======
     "installed_plugins": {
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.vergarotoma.wallet"
@@ -155,14 +80,5 @@
         "cordova-plugin-splashscreen": "4.0.3",
         "cordova-plugin-whitelist": "1.3.1",
         "ionic-plugin-keyboard": "2.2.1"
->>>>>>> 766b9e1ed26a1803ead358aab0bc59c92673cf3d
     }
-  ],
-  "plugin_metadata": {
-    "cordova-plugin-device": "1.1.4",
-    "cordova-plugin-ionic-webview": "1.1.16",
-    "cordova-plugin-splashscreen": "4.0.3",
-    "cordova-plugin-whitelist": "1.3.1",
-    "ionic-plugin-keyboard": "2.2.1"
-  }
 }
