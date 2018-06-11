@@ -96,8 +96,9 @@ console.log(localStorage.getItem("username"), localStorage.getItem("password"));
       }
     }
   })
-
   
+
+
 
     .state('app.profilo', {
         url: '/profilo',
