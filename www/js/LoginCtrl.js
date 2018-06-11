@@ -38,6 +38,12 @@ angular.module('starter.controllers')
     });
   }
 
+  if((localStorage.getItem("username") != undefined) && (localStorage.getItem("password") != undefined)){
+    $scope.loginData.username = localStorage.getItem("username");
+    $scope.loginData.password = localStorage.getItem("password");
+    $scope.doLogin();
+  }
+
 
 
   $scope.showModal = function() {
