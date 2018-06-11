@@ -97,15 +97,7 @@ console.log(localStorage.getItem("username"), localStorage.getItem("password"));
     }
   })
 
-  .state('app.registrazione', {
-    url: '/registrazione',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/registrazione.html',
-        controller: 'RegistrazioneCtrl'
-      }
-    }
-  })
+  
 
     .state('app.profilo', {
         url: '/profilo',
