@@ -3,10 +3,12 @@ angular.module('starter.controllers')
 .controller('ProfiloCtrl', function($scope, $ionicPopup, $ionicLoading,$rootScope, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
     viewData.enableBack = false;
-    console.log($rootScope.eliminati);
+
     if ($rootScope.eliminati != undefined) {
-      $rootScope.eliminati == undefined
-      $window.location.reload();
+      if ($rootScope.eliminati.length != 0) {
+        $rootScope.eliminati == undefined
+        $window.location.reload();
+      }
     }
   });
 
