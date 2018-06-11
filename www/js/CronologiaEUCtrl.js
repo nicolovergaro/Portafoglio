@@ -17,9 +17,13 @@ angular.module('starter.controllers')
       id_utente: $scope.id_utente
     }
   }).then(function(response){
-    $scope.movimenti = response.data.movimenti;
-    getLongData();
-    console.log($scope.movimenti);
+    if (response.data.entrate != undefined) {
+      $scope.movimenti = response.data.movimenti;
+      getLongData();
+      $scope.trovato = true
+    }else{
+      $scope.trovato = false
+    }
   }).catch(function(error){
     console.log(error);
   });

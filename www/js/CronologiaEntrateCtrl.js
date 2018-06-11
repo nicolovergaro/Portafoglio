@@ -19,9 +19,15 @@ var link = "http://moneytrack.altervista.org/select.php";
       id_utente: $scope.id_utente
     }
   }).then(function(response){
-    $scope.entrate = response.data.entrate;
-    getLongData();
-    console.log($scope.entrate);
+    if (response.data.entrate != undefined) {
+      $scope.entrate = response.data.entrate;
+      getLongData();
+      $scope.trovato = true
+    }else{
+      $scope.trovato = false
+    }
+
+    // console.log($scope.entrate);
   }).catch(function(error){
     console.log(error);
   });
