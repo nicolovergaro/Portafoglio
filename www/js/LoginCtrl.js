@@ -133,5 +133,13 @@ angular.module('starter.controllers')
     });
   }
 
+  $scope.getFile = function(){
+   document.getElementById("upfile").click();
+  }
+
+  function showImage(){
+    console.log("Cambiata");
+  }
+
 
 });
