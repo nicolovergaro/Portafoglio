@@ -1,6 +1,6 @@
 
 angular.module('starter.controllers')
-.controller('ricercaCtrl', function($scope, $http, ionicDatePicker, $ionicScrollDelegate) {
+.controller('ricercaCtrl', function($scope, $http, ionicDatePicker, $ionicScrollDelegate, sharedProperties) {
   var link = "http://moneytrack.altervista.org/select.php";
   var link1 = "http://moneytrack.altervista.org/ricercaPerTipo.php";
   var link2 = "http://moneytrack.altervista.org/getCronologia.php";
@@ -10,6 +10,9 @@ angular.module('starter.controllers')
   $scope.data="Ricerca per data...";
   var d=[];
   var o=[];
+
+  $scope.id_utente = sharedProperties.getIdUtente();
+
 
   $http.get(link,{
     params: {
@@ -43,7 +46,7 @@ angular.module('starter.controllers')
 
     $http.get(link2,{
       params: {
-        id_utente:1,
+        id_utente:$scope.id_utente,
         anno:  $scope.data.getFullYear(),
         mese: $scope.data.getUTCMonth()+1,
         giorno: $scope.data.getUTCDate()
@@ -77,7 +80,7 @@ angular.module('starter.controllers')
 
       $http.get(link1,{
         params: {
-          id_utente:1,
+          id_utente:$scope.id_utente,
           id_tipo: $scope.id_tipo
 
 
@@ -109,7 +112,7 @@ angular.module('starter.controllers')
   }else{
     $http.get(link1,{
       params: {
-        id_utente:1,
+        id_utente:$scope.id_utente,
         id_tipo: $scope.id_tipo
 
 
@@ -218,6 +221,7 @@ angular.module('starter.controllers')
     $scope.data="Ricerca per data...";
     $scope.movimenti = null;
     $scope.trovato = null;
+    $scope.visibile = 'none';
   }
 
 
