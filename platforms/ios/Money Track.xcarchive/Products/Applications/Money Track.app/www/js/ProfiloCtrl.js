@@ -410,6 +410,8 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
       };
 
     //Funzione per ottenere i tipi
+    $scope.popup = {};
+    $scope.popup.categorieMovimenti = {};
      function getTipi(){
        var link = "http://moneytrack.altervista.org/select.php";
        $http.get(link,{
@@ -417,15 +419,12 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
            tabella: 'tipi'
          }
        }).then(function(response){
-         $scope.categorieMovimenti = response.data.tipi;
-         // console.log($scope.categorie);
+         $scope.popup.categorieMovimenti = response.data.tipi;
+         console.log($scope.popup.categorieMovimenti);
        }).catch(function(error){
          console.log(error);
        });
    };
-
-
-
 
      $scope.showModal = function() {
        $ionicModal.fromTemplateUrl('templates/addmovimenti.html', {
@@ -498,11 +497,6 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
        var id_utente = $scope.id_utente;
        // console.log(importo);
        insertMovimento(tabella,dataDB,importo,nome,id_tipo,id_utente);
-
-       // var sql = "INSERT INTO " + tabella + "VALUES (NULL, "+", '"+dataDB +
-       //  "', " + importo + ", '" + nome + "', " + id_tipo + ", " + id_utente+")";
-       //
-       //  console.log(sql);
      }
 
      //Funzione per ottenere i tipi

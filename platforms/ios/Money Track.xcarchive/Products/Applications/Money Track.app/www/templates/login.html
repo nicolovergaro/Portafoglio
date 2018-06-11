@@ -1,6 +1,6 @@
 <ion-view view-title="Login" hide-nav-bar="true" cache-view="false">
   <ion-content>
-    <h1 style="text-align: center; padding: 30px;">Portafoglio</h1>
+    <h1 style="text-align: center; padding: 30px;">Money Track</h1>
 
     <ion-list>
       <label class="item item-input">
@@ -28,7 +28,7 @@
       <button class="button button-positive button-full" ng-click="doLogin()">
         Login
       </button>
-      Non hai un account? <a href="#/app/registrazione">Registrati</a>
+      Non hai un account? <a ng-click="showModal()">Registrati</a>
     </div>
   </ion-content>
 </ion-view>

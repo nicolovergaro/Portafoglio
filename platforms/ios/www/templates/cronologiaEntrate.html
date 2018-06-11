@@ -1,6 +1,7 @@
 <ion-view view-title="Entrate" >
   <ion-content class="padding" >
-      <section id="cd-timeline" class="cd-container">
+    <div ng-if="trovato==true">
+        <section id="cd-timeline" class="cd-container">
         <div ng-repeat="entrata in entrate" >
 
           <div class="cd-timeline-block">
@@ -18,6 +19,10 @@
           </div>
         </div>
       </section>
+    </div>
+      <div class = "empty-data" ng-if="trovato==false">
+        <img  src="img/nomovimenti.png" style="width: 70%; height: 70%"/>
+      </div>
   </ion-content>
 
 

@@ -1,5 +1,4 @@
-<ion-view view-title="Registrazione" hide-nav-bar="true" cache-view="false">
-  <ion-content>
+<ion-modal-view>
     <style media="screen">
     .upload-btn-wrapper {
       position: relative;
@@ -24,7 +23,15 @@
     }
 
     </style>
-    <h1 style="text-align: center; padding-top: 30px;">Portafoglio</h1>
+
+    <ion-header-bar class="bar bar-header bar-positive">
+      <h1 class="title">Registrazione</h1>
+      <button class="button button-clear button-primary" ng-click="closeModal()">Annulla</button>
+    </ion-header-bar>
+
+
+<ion-content>
+    <h1 style="text-align: center; padding-top: 30px;">Money Track</h1>
     <h3 style="text-align: center;font-style: italic;padding-bottom: 30px">Registrazione</h3>
 
     <ion-list>
@@ -81,4 +88,4 @@
       </button>
     </div>
   </ion-content>
-</ion-view>
+</ion-modal-view>

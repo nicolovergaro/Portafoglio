@@ -1,6 +1,13 @@
 angular.module('starter.controllers')
 .controller('CronologiaEntrateCtrl', function($scope, $rootScope, $filter, $http,$ionicPopup, $window, $ionicActionSheet, sharedProperties) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+    if ($scope.entrate != null) {
+      if ($scope.entrate.length == 0) {
+        $scope.trovato = false
+      }
+    }else{
+      $scope.trovato = false
+    }
     if ($rootScope.eliminati != []) {
       for (var i = 0; i < $rootScope.eliminati.length; i++) {
         cancellaMovimento($rootScope.eliminati[i])
@@ -34,19 +41,9 @@ var link = "http://moneytrack.altervista.org/select.php";
 
 
 function getLongData(){
-  var link = "http://moneytrack.altervista.org/select.php";
-  $scope.entrate = null;
-
   var d=[];
   var o=[];
 
-  $http.get(link,{
-    params: {
-      tabella: 'entrate',
-      id_utente: $scope.id_utente
-    }
-  }).then(function(response){
-    $scope.entrate = response.data.entrate;
     var dim=$scope.entrate.length;
     for (var i = 0; i < dim; i++) {
       d[i]=$scope.entrate[i].data.substring(0, 10);
@@ -61,10 +58,6 @@ function getLongData(){
       $scope.entrate[i].ora=ora;
 
     }
-
-  }).catch(function(error){
-    console.log(error);
-  });
 
 }
 

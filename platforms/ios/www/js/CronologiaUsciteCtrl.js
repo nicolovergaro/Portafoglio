@@ -18,26 +18,22 @@ $scope.id_utente = sharedProperties.getIdUtente();
       id_utente: $scope.id_utente
     }
   }).then(function(response){
-    $scope.uscite = response.data.uscite;
-    getLongData();
+    if (response.data.uscite != undefined) {
+      $scope.uscite = response.data.uscite;
+      getLongData();
+      $scope.trovato = true
+    }else{
+      $scope.trovato = false
+    }
   }).catch(function(error){
     console.log(error);
   });
 
   function getLongData(){
-    var link = "http://moneytrack.altervista.org/select.php";
-    $scope.uscite = null;
 
     var d=[];
     var o=[];
 
-    $http.get(link,{
-      params: {
-        tabella: 'uscite',
-        id_utente: $scope.id_utente
-      }
-    }).then(function(response){
-      $scope.uscite = response.data.uscite;
       for (var i = 0; i < $scope.uscite.length; i++) {
         d[i]=$scope.uscite[i].data.substring(0, 10);
         o[i]=$scope.uscite[i].data.substring(11, 16);
@@ -49,14 +45,7 @@ $scope.id_utente = sharedProperties.getIdUtente();
 
         $scope.uscite[i].data=data;
         $scope.uscite[i].ora=ora;
-
-
       }
-
-    }).catch(function(error){
-      console.log(error);
-    });
-
 
   }
 
