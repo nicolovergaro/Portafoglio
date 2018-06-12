@@ -3,6 +3,7 @@ angular.module('starter.controllers')
 .controller('LoginCtrl', function($scope, $http, $ionicPopup,$ionicModal, $state, $ionicHistory, sharedProperties, utils) {
   $scope.loginData={};
   $scope.loginData.remember=true;
+  $scope.imgProfilo = "/img/imgdefault.png";
 
   //funzione per il login
   $scope.doLogin = function(){
@@ -137,9 +138,23 @@ angular.module('starter.controllers')
    document.getElementById("upfile").click();
   }
 
-  function showImage(){
-    console.log("Cambiata");
-  }
+  $scope.setFile = function(element) {
+        $scope.$apply(function($scope) {
+        var file = element.files[0];
+        if (element.files && element.files[0]) {
+          $scope.imgProfilo = element.files[0];
+            var reader = new FileReader();
 
+            reader.onload = function (e) {
+                $('#imgProfilo')
+                    .attr('src', e.target.result)
+                    .width(130)
+                    .height(130);
+            };
+
+            reader.readAsDataURL(element.files[0]);
+        }
+      })
+    };
 
 });
