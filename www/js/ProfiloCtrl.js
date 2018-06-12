@@ -3,7 +3,6 @@ angular.module('starter.controllers')
 .controller('ProfiloCtrl', function($scope, $ionicPopup, $ionicLoading,$rootScope, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
     viewData.enableBack = false;
-
     if ($rootScope.eliminati != undefined) {
       if ($rootScope.eliminati.length != 0) {
         $rootScope.eliminati == undefined
@@ -509,11 +508,16 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
      //Funzione per ottenere i tipi
       function insertMovimento(tabella,data,importo,nome,id_tipo,id_utente){
         var link = "http://moneytrack.altervista.org/insert.php";
+
+        var key = $rootScope.key;
+        var encryptedN = CryptoJS.AES.encrypt(nome, key, {}).toString();
+
+
         var fd = new FormData();
         fd.append("tabella", tabella);
         fd.append("data", data)
         fd.append("importo", importo);
-        fd.append("nome", nome);
+        fd.append("nome", encryptedN);
         fd.append("id_tipo", id_tipo);
         fd.append("id_utente", id_utente);
 

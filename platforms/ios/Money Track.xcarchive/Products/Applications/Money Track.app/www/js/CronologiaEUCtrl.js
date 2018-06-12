@@ -1,6 +1,13 @@
 angular.module('starter.controllers')
 .controller('CronologiaEUCtrl', function($scope, $rootScope, $http,$ionicPopup,$window, sharedProperties) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+    if ($scope.movimenti != null) {
+      if ($scope.movimenti.length == 0) {
+        $scope.trovato = false
+      }
+    }else{
+      $scope.trovato = false
+    }
     if ($rootScope.eliminati != []) {
       for (var i = 0; i < $rootScope.eliminati.length; i++) {
         cancellaMovimento($rootScope.eliminati[i])
@@ -57,7 +64,7 @@ angular.module('starter.controllers')
   $scope.showMenu = function(id,tabella) {
 
     catPopup = $ionicPopup.show({
-       templateUrl: "/templates/categoriePopup.html",
+       templateUrl: "/templates/eliminaPopup.html",
        cssClass: 'categorie-popup',
        title: "",
        scope: $scope,

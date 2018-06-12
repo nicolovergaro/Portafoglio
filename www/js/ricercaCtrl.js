@@ -1,6 +1,6 @@
 
 angular.module('starter.controllers')
-.controller('ricercaCtrl', function($scope, $http, ionicDatePicker, $ionicScrollDelegate, sharedProperties) {
+.controller('ricercaCtrl', function($scope, $rootScope, $http, ionicDatePicker, $ionicScrollDelegate, sharedProperties) {
   var link = "http://moneytrack.altervista.org/select.php";
   var link1 = "http://moneytrack.altervista.org/ricercaPerTipo.php";
   var link2 = "http://moneytrack.altervista.org/getCronologia.php";
@@ -56,6 +56,11 @@ angular.module('starter.controllers')
     }).then(function(response){
       if (response.data.movimenti != undefined){
         $scope.movimenti = response.data.movimenti;
+        var key = $rootScope.key;
+        for (var i = 0; i < $scope.movimenti.length; i++) {
+          var decrypted = CryptoJS.AES.decrypt($scope.movimenti[i].nome,key).toString(CryptoJS.enc.Utf8);
+          $scope.movimenti[i].nome = decrypted;
+        }
         for (var i = 0; i < $scope.movimenti.length; i++) {
           d[i]=$scope.movimenti[i].data.substring(0, 10);
           o[i]=$scope.movimenti[i].data.substring(11, 16);

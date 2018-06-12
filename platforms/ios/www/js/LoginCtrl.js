@@ -3,6 +3,7 @@ angular.module('starter.controllers')
 .controller('LoginCtrl', function($scope, $http, $ionicPopup,$ionicModal, $state, $ionicHistory, sharedProperties, utils) {
   $scope.loginData={};
   $scope.loginData.remember=true;
+  $scope.imgProfilo = "/img/imgdefault.png";
 
   //funzione per il login
   $scope.doLogin = function(){
@@ -43,6 +44,8 @@ angular.module('starter.controllers')
     $scope.loginData.password = localStorage.getItem("password");
     $scope.doLogin();
   }
+
+
 
   $scope.showModal = function() {
     $ionicModal.fromTemplateUrl('templates/registrazione.html', {
@@ -123,9 +126,35 @@ angular.module('starter.controllers')
       localStorage.setItem("username", data.username);
       localStorage.setItem("password", $scope.data.password);
 
-    $scope.closeModal();
+      $scope.closeModal();
+        $scope.loginData.username = localStorage.getItem("username");
+        $scope.loginData.password = localStorage.getItem("password");
+        $scope.doLogin();
+
     });
   }
 
+  $scope.getFile = function(){
+   document.getElementById("upfile").click();
+  }
+
+  $scope.setFile = function(element) {
+        $scope.$apply(function($scope) {
+        var file = element.files[0];
+        if (element.files && element.files[0]) {
+          $scope.imgProfilo = element.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgProfilo')
+                    .attr('src', e.target.result)
+                    .width(130)
+                    .height(130);
+            };
+
+            reader.readAsDataURL(element.files[0]);
+        }
+      })
+    };
 
 });

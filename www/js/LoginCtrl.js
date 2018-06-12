@@ -1,6 +1,6 @@
 
 angular.module('starter.controllers')
-.controller('LoginCtrl', function($scope, $http, $ionicPopup,$ionicModal, $state, $ionicHistory, sharedProperties, utils) {
+.controller('LoginCtrl', function($scope, $rootScope, $http, $ionicPopup,$ionicModal, $state, $ionicHistory, sharedProperties, utils) {
   $scope.loginData={};
   $scope.loginData.remember=true;
   $scope.imgProfilo = "/img/imgdefault.png";
@@ -28,6 +28,8 @@ angular.module('starter.controllers')
         sharedProperties.setCognome(data.cognome);
         sharedProperties.setSaldo(data.saldo);
 
+        $rootScope.key = utils.MD5($scope.loginData.password) + id
+
         if($scope.loginData.remember){
           localStorage.setItem("username", $scope.loginData.username);
           localStorage.setItem("password", $scope.loginData.password);
@@ -53,6 +55,7 @@ angular.module('starter.controllers')
     }).then(function(modal) {
 
       $scope.modalView = modal;
+      $scope.imgProfilo = "/img/imgdefault.png";
 
       $scope.modalView.show();
     });
@@ -111,7 +114,7 @@ angular.module('starter.controllers')
       $scope.data.cognome,
       $scope.data.email,
       $scope.data.saldo,
-      document.getElementById('photo').files[0]
+      document.getElementById('upfile').files[0]
     ).success(function(data){
 
       console.log("Creato con successo");
