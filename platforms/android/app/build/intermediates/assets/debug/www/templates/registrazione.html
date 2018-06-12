@@ -36,8 +36,8 @@
     <h1 style="text-align: center; padding-top: 10px;">Money Track</h1>
     <h5 style="text-align: center;font-style: italic;padding-top: 0px">Carica una foto</h5>
 
-    <img src="/img/imgdefault.png" style="border-radius: 50%;display: block; margin: 0 auto; width:30%; height: 30%; margin-bottom: 20px" ng-click="getFile()"/>
-    <div style='height: 0px;width:0px; overflow:hidden;'><input id="upfile" type="file" value="upload" onchange="showImage()"/></div>
+    <img src="{{imgProfilo}}" id="imgProfilo" style="border-radius: 50%;display: block; margin: 0 auto; width:130px; height: 130px; margin-bottom: 20px" ng-click="getFile()"/>
+    <div style='height: 0px;width:0px; overflow:hidden;'><input id="upfile" type="file" value="upload" onchange="angular.element(this).scope().setFile(this)"/></div>
 
   </div>
     <ion-list>
