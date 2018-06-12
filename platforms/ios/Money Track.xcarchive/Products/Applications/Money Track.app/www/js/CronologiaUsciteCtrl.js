@@ -1,6 +1,13 @@
 angular.module('starter.controllers')
 .controller('CronologiaUsciteCtrl', function($scope, $http,$ionicPopup,$window, $rootScope, sharedProperties) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+    if ($scope.uscite != null) {
+      if ($scope.uscite.length == 0) {
+        $scope.trovato = false
+      }
+    }else{
+      $scope.trovato = false
+    }
     if ($rootScope.eliminati != []) {
       for (var i = 0; i < $rootScope.eliminati.length; i++) {
         cancellaMovimento($rootScope.eliminati[i])
@@ -60,7 +67,7 @@ $scope.id_utente = sharedProperties.getIdUtente();
   $scope.showMenu = function(id) {
 
     catPopup = $ionicPopup.show({
-       templateUrl: "/templates/categoriePopup.html",
+       templateUrl: "/templates/eliminaPopup.html",
        cssClass: 'categorie-popup',
        title: "",
        scope: $scope,

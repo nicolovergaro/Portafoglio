@@ -1,8 +1,9 @@
 
 angular.module('starter.controllers')
-.controller('LoginCtrl', function($scope, $http, $ionicPopup,$ionicModal, $state, $ionicHistory, sharedProperties, utils) {
+.controller('LoginCtrl', function($scope, $rootScope, $http, $ionicPopup,$ionicModal, $state, $ionicHistory, sharedProperties, utils) {
   $scope.loginData={};
   $scope.loginData.remember=true;
+  $scope.imgProfilo = "/img/imgdefault.png";
 
   //funzione per il login
   $scope.doLogin = function(){
@@ -26,6 +27,8 @@ angular.module('starter.controllers')
         sharedProperties.setNome(data.nome);
         sharedProperties.setCognome(data.cognome);
         sharedProperties.setSaldo(data.saldo);
+
+        $rootScope.key = utils.MD5($scope.loginData.password) + id
 
         if($scope.loginData.remember){
           localStorage.setItem("username", $scope.loginData.username);
@@ -52,6 +55,7 @@ angular.module('starter.controllers')
     }).then(function(modal) {
 
       $scope.modalView = modal;
+      $scope.imgProfilo = "/img/imgdefault.png";
 
       $scope.modalView.show();
     });
@@ -110,7 +114,7 @@ angular.module('starter.controllers')
       $scope.data.cognome,
       $scope.data.email,
       $scope.data.saldo,
-      document.getElementById('photo').files[0]
+      document.getElementById('upfile').files[0]
     ).success(function(data){
 
       console.log("Creato con successo");
@@ -137,9 +141,23 @@ angular.module('starter.controllers')
    document.getElementById("upfile").click();
   }
 
-  function showImage(){
-    console.log("Cambiata");
-  }
+  $scope.setFile = function(element) {
+        $scope.$apply(function($scope) {
+        var file = element.files[0];
+        if (element.files && element.files[0]) {
+          $scope.imgProfilo = element.files[0];
+            var reader = new FileReader();
 
+            reader.onload = function (e) {
+                $('#imgProfilo')
+                    .attr('src', e.target.result)
+                    .width(130)
+                    .height(130);
+            };
+
+            reader.readAsDataURL(element.files[0]);
+        }
+      })
+    };
 
 });

@@ -1,8 +1,15 @@
 
 angular.module('starter.controllers')
-.controller('ProfiloCtrl', function($scope, $ionicPopup, $ionicLoading, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
+.controller('ProfiloCtrl', function($scope, $ionicPopup, $ionicLoading,$rootScope, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
     viewData.enableBack = false;
+
+    if ($rootScope.eliminati != undefined) {
+      if ($rootScope.eliminati.length != 0) {
+        $rootScope.eliminati == undefined
+        $window.location.reload();
+      }
+    }
   });
 
   //animazione loading
@@ -420,7 +427,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
          }
        }).then(function(response){
          $scope.popup.categorieMovimenti = response.data.tipi;
-         console.log($scope.popup.categorieMovimenti);
+         // console.log($scope.popup.categorieMovimenti);
        }).catch(function(error){
          console.log(error);
        });

@@ -28,6 +28,11 @@ var link = "http://moneytrack.altervista.org/select.php";
   }).then(function(response){
     if (response.data.entrate != undefined) {
       $scope.entrate = response.data.entrate;
+      var key = $rootScope.key;
+      for (var i = 0; i < $scope.entrate.length; i++) {
+        var decrypted = CryptoJS.AES.decrypt($scope.entrate[i].nome,key).toString(CryptoJS.enc.Utf8);
+        $scope.entrate[i].nome = decrypted;
+      }
       getLongData();
       $scope.trovato = true
     }else{

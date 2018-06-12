@@ -22,6 +22,8 @@
       opacity: 0;
     }
 
+
+
     </style>
 
     <ion-header-bar class="bar bar-header bar-positive">
@@ -31,9 +33,13 @@
 
 
 <ion-content>
-    <h1 style="text-align: center; padding-top: 30px;">Money Track</h1>
-    <h3 style="text-align: center;font-style: italic;padding-bottom: 30px">Registrazione</h3>
+    <h1 style="text-align: center; padding-top: 10px;">Money Track</h1>
+    <h5 style="text-align: center;font-style: italic;padding-top: 0px">Carica una foto</h5>
 
+    <img src="{{imgProfilo}}" id="imgProfilo" style="border-radius: 50%;display: block; margin: 0 auto; width:130px; height: 130px; margin-bottom: 20px" ng-click="getFile()"/>
+    <div style='height: 0px;width:0px; overflow:hidden;'><input id="upfile" type="file" value="upload" onchange="angular.element(this).scope().setFile(this)"/></div>
+
+  </div>
     <ion-list>
       <label class="item item-input">
         <i class="icon ion-person placeholder-icon"></i>
@@ -71,14 +77,14 @@
         <input type="text" placeholder="Saldo iniziale" ng-model="data.saldo" />
       </label>
 
-      <label class="item item-input">
+      <!-- <label class="item item-input">
         <i class="icon ion-camera placeholder-icon"></i>
         <div class="upload-btn-wrapper">
           <button class="btn">Carica foto</button>
-          <!--<input type="file" name="photo" onchange="angular.element(this).scope().uploadFile(this.files)" />-->
+          <input type="file" name="photo" onchange="angular.element(this).scope().uploadFile(this.files)" />
           <input type="file" name="photo" id="photo"/>
         </div>
-      </label>
+      </label> -->
 
     </ion-list>
 
