@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Jun 11 18:46:10 CEST 2018
+#Mon Jun 11 20:04:52 CEST 2018
 20.base=C\:\\Users\\Francesco\\Desktop\\portafoglio\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 143.base=C\:\\Users\\Francesco\\Desktop\\portafoglio\\platforms\\android\\app\\build\\intermediates\\assets\\debug
 237.path=classes.dex

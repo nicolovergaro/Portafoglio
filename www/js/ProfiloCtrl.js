@@ -1,7 +1,11 @@
 
 angular.module('starter.controllers')
-.controller('ProfiloCtrl', function($scope, $ionicPopup, $ionicLoading,$rootScope, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
+.controller('ProfiloCtrl', function($scope, $ionicPopup,$ionicPlatform, $ionicLoading,$rootScope, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
+
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+
+
+
     viewData.enableBack = false;
 
     if ($rootScope.eliminati != undefined) {
@@ -11,6 +15,9 @@ angular.module('starter.controllers')
       }
     }
   });
+
+
+
 
   //animazione loading
   $ionicLoading.show({
@@ -433,13 +440,28 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
        });
    };
 
-     $scope.showModal = function() {
-       $ionicModal.fromTemplateUrl('templates/addmovimenti.html', {
-         scope: $scope
-       }).then(function(modal) {
+   //Modal view
 
+   $scope.closeModal = function() {
+     $scope.modalView.hide();
+     $scope.modal.totale = null;
+
+   };
+
+
+
+
+
+
+     $scope.showModal = function() {
+
+       $ionicModal.fromTemplateUrl('templates/addmovimenti.html', {
+         scope: $scope,
+
+       }).then(function(modal) {
+         console.log($scope.aperto);
          $scope.modalView = modal;
-         var data = new Date();
+         var data = new Date ();
          $scope.modal.data = data;
          $scope.modal.dataSecondi = data.getTime();
          $scope.modal.tabTipoAttivo = 1;
@@ -447,13 +469,17 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
          $scope.modal.cat.tipo = "Categoria"
          $scope.modal.nome = "";
          $scope.modalView.show();
+
+
+
        });
+
+
      };
 
-      $scope.closeModal = function() {
-        $scope.modalView.hide();
-        $scope.modal.totale = null;
-      };
+
+
+
 
 
      $scope.selezionaTipo=function(tab){
