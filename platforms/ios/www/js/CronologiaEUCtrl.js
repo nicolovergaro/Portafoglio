@@ -26,6 +26,11 @@ angular.module('starter.controllers')
   }).then(function(response){
     if (response.data.movimenti != undefined) {
       $scope.movimenti = response.data.movimenti;
+      var key = $rootScope.key;
+      for (var i = 0; i < $scope.movimenti.length; i++) {
+        var decrypted = CryptoJS.AES.decrypt($scope.movimenti[i].nome,key).toString(CryptoJS.enc.Utf8);
+        $scope.movimenti[i].nome = decrypted;
+      }
       getLongData();
       $scope.trovato = true
     }else{
