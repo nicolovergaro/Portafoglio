@@ -466,7 +466,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
          $scope.modal.dataSecondi = data.getTime();
          $scope.modal.tabTipoAttivo = 1;
          $scope.modal.ora = data;
-         $scope.modal.cat = "Categoria"
+         $scope.modal.cat.tipo = "Categoria"
          $scope.modal.nome = "";
          $scope.modalView.show();
 
