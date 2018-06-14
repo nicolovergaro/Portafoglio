@@ -40,7 +40,7 @@
           "NSAppTransportSecurity": [
             {
               "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 16
+              "count": 17
             }
           ]
         }
