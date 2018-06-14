@@ -93,6 +93,11 @@ angular.module('starter.controllers')
       }).then(function(response){
         if (response.data.movimenti != undefined){
           $scope.movimenti = response.data.movimenti;
+          var key = $rootScope.key;
+          for (var i = 0; i < $scope.movimenti.length; i++) {
+            var decrypted = CryptoJS.AES.decrypt($scope.movimenti[i].nome,key).toString(CryptoJS.enc.Utf8);
+            $scope.movimenti[i].nome = decrypted;
+          }
           for (var i = 0; i < $scope.movimenti.length; i++) {
             d[i]=$scope.movimenti[i].data.substring(0, 10);
             o[i]=$scope.movimenti[i].data.substring(11, 16);
@@ -125,12 +130,18 @@ angular.module('starter.controllers')
     }).then(function(response){
       if (response.data.movimenti != undefined) {
         $scope.movimenti = response.data.movimenti;
+        var key = $rootScope.key;
+        for (var i = 0; i < $scope.movimenti.length; i++) {
+          var decrypted = CryptoJS.AES.decrypt($scope.movimenti[i].nome,key).toString(CryptoJS.enc.Utf8);
+          $scope.movimenti[i].nome = decrypted;
+        }
         var array= $scope.movimenti.filter(function(el){
-          var dat=new Date(el.data);
+          var dat=new Date((el.data).replace(/-/g, "/"));
           return dat.getUTCFullYear()==$scope.data.getUTCFullYear()&&
           dat.getUTCMonth()==$scope.data.getUTCMonth()&&
           dat.getUTCDate()==$scope.data.getUTCDate();
         });
+        // console.log(array);
         $scope.movimenti=array;
         for (var i = 0; i < $scope.movimenti.length; i++) {
           d[i]=$scope.movimenti[i].data.substring(0, 10);
