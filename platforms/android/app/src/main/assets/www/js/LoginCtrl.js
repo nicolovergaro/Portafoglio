@@ -55,7 +55,7 @@ angular.module('starter.controllers')
     }).then(function(modal) {
 
       $scope.modalView = modal;
-      $scope.imgProfilo = "/img/imgdefault.png";
+      $scope.imgProfilo = "img/imgdefault.png";
 
       $scope.modalView.show();
     });
