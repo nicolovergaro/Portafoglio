@@ -490,7 +490,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
      $scope.showCategories = function(){
        catPopup = $ionicPopup.show({
-          templateUrl: "/templates/categoriePopup.html",
+          templateUrl: "templates/categoriePopup.html",
           cssClass: 'categorie-popup',
           title: $scope.modal.cat,
           scope: $scope,

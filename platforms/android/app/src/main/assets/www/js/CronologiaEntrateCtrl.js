@@ -77,7 +77,7 @@ function cancellaMovimento(id){
 $scope.showMenu = function(id) {
 
   catPopup = $ionicPopup.show({
-     templateUrl: "/templates/eliminaPopup.html",
+     templateUrl: "templates/eliminaPopup.html",
      cssClass: 'categorie-popup',
      title: "",
      scope: $scope,

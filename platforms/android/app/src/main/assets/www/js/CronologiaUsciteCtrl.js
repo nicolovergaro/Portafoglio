@@ -72,7 +72,7 @@ $scope.id_utente = sharedProperties.getIdUtente();
   $scope.showMenu = function(id) {
 
     catPopup = $ionicPopup.show({
-       templateUrl: "/templates/eliminaPopup.html",
+       templateUrl: "templates/eliminaPopup.html",
        cssClass: 'categorie-popup',
        title: "",
        scope: $scope,

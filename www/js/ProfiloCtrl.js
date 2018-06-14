@@ -466,7 +466,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
          $scope.modal.dataSecondi = data.getTime();
          $scope.modal.tabTipoAttivo = 1;
          $scope.modal.ora = data;
-         $scope.modal.cat = "Categoria"
+         $scope.modal.cat.tipo = "Categoria"
          $scope.modal.nome = "";
          $scope.modalView.show();
 
@@ -490,7 +490,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
      $scope.showCategories = function(){
        catPopup = $ionicPopup.show({
-          templateUrl: "/templates/categoriePopup.html",
+          templateUrl: "templates/categoriePopup.html",
           cssClass: 'categorie-popup',
           title: $scope.modal.cat,
           scope: $scope,
