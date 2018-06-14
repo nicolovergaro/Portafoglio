@@ -72,7 +72,6 @@ getMovimenti(month,"","");
         giorno:giorno
       }
     }).success(function(data){
-      $ionicLoading.hide()
       if (data.movimenti != undefined){
         $scope.movimentiPresenti = true
         $scope.movimenti = data.movimenti;
@@ -120,6 +119,7 @@ getMovimenti(month,"","");
     // Instantiate and draw our chart, passing in some options.
     var chart = new google.visualization.PieChart(document.getElementById('categorie_chart_div'));
     chart.draw(data, options);
+
   }
 
 
@@ -138,6 +138,7 @@ getMovimenti(month,"","");
       setUpGraficoMovimenti();
       setUpGraficoCategorie();
     }
+    $ionicLoading.hide();
 
   }
 

@@ -3,7 +3,7 @@ angular.module('starter.controllers')
 .controller('LoginCtrl', function($scope, $rootScope, $http, $ionicPopup,$ionicModal, $state, $ionicHistory, sharedProperties, utils) {
   $scope.loginData={};
   $scope.loginData.remember=true;
-  $scope.imgProfilo = "/img/imgdefault.png";
+  $scope.imgProfilo = "img/imgdefault.png";
 
   //funzione per il login
   $scope.doLogin = function(){
