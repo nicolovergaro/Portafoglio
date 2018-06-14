@@ -96,7 +96,7 @@ console.log(localStorage.getItem("username"), localStorage.getItem("password"));
       }
     }
   })
-  
+
 
 
 
@@ -142,6 +142,16 @@ console.log(localStorage.getItem("username"), localStorage.getItem("password"));
         }
       })
 
+  /*    .state('app.categoriePopup', {
+          url: '/cronologiaPopup',
+          views: {
+            'tabs-cronologiaUscite': {
+              templateUrl: 'templates/cronologiaPopup.html',
+              controller: 'ProfiloCtrl'
+            }
+          }
+        })
+*/
       .state('app.tabs.cronologiaEU', {
         url: '/cronologiaEU',
         views: {
