@@ -82,7 +82,7 @@ angular.module('starter.controllers')
           var link = "http://moneytrack.altervista.org/delete.php";
           var fd = new FormData();
           fd.append("tabella", tabella);
-          fd.append("id_uscita", id);
+          fd.append("id_entrata", id);
 
 
           $http.post(link, fd, {

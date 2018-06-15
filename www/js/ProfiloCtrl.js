@@ -3,16 +3,18 @@ angular.module('starter.controllers')
 .controller('ProfiloCtrl', function($scope, $ionicPopup,$ionicPlatform, $ionicLoading,$rootScope, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
 
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
-
+    console.log($rootScope.eliminati);
 
 
     viewData.enableBack = false;
     if ($rootScope.eliminati != undefined) {
-      if ($rootScope.eliminati.length != 0) {
-        $rootScope.eliminati == undefined
+      //if ($rootScope.eliminati.length != 0) {
+
         $window.location.reload();
-      }
-    }
+    //  }
+   }
+
+
   });
 
 
@@ -33,7 +35,7 @@ if ($scope.categorieMovimenti == undefined) {
 
 
   $scope.tabAttivo = 1;
-  $scope.movimenti = undefined
+  $scope.movimenti = undefined;
 
   $scope.id_utente = sharedProperties.getIdUtente();
   var entrateTot = 0;
@@ -76,13 +78,17 @@ getMovimenti(month,"","");
         $scope.movimentiPresenti = true
         $scope.movimenti = data.movimenti;
         $scope.selezionaPeriodo($scope.tabAttivo);
+          console.log("entro if");
       }else{
-        $scope.movimentiPresenti = false
+        $scope.movimentiPresenti = false;
+        $ionicLoading.hide();
+        console.log("entro else");
       }
 
       // console.log($scope.movimenti);
     }).catch(function(error){
       console.log(error);
+      console.log($scope.movimenti);
     });
   }
 
@@ -459,7 +465,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
          scope: $scope,
 
        }).then(function(modal) {
-         console.log($scope.aperto);
+
          $scope.modalView = modal;
          var data = new Date ();
          $scope.modal.data = data;
