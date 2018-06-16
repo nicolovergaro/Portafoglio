@@ -8,10 +8,10 @@ angular.module('starter.controllers')
 
     viewData.enableBack = false;
     if ($rootScope.eliminati != undefined) {
-      //if ($rootScope.eliminati.length != 0) {
-
+      if ($rootScope.eliminati.length != 0) {
+        $rootScope.eliminati = undefined;
         $window.location.reload();
-    //  }
+     }
    }
 
 
@@ -78,12 +78,12 @@ getMovimenti(month,"","");
         $scope.movimentiPresenti = true
         $scope.movimenti = data.movimenti;
         $scope.selezionaPeriodo($scope.tabAttivo);
-          console.log("entro if");
       }else{
         $scope.movimentiPresenti = false;
-        $ionicLoading.hide();
-        console.log("entro else");
       }
+
+      $ionicLoading.hide();
+
 
       // console.log($scope.movimenti);
     }).catch(function(error){
@@ -144,7 +144,6 @@ getMovimenti(month,"","");
       setUpGraficoMovimenti();
       setUpGraficoCategorie();
     }
-    $ionicLoading.hide();
 
   }
 
