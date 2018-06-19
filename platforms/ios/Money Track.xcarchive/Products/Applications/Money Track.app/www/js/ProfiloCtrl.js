@@ -1,16 +1,24 @@
 
 angular.module('starter.controllers')
-.controller('ProfiloCtrl', function($scope, $ionicPopup, $ionicLoading,$rootScope, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
-  $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
-    viewData.enableBack = false;
+.controller('ProfiloCtrl', function($scope, $ionicPopup,$ionicPlatform, $ionicLoading,$rootScope, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
 
+  $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
+    console.log($rootScope.eliminati);
+
+
+    viewData.enableBack = false;
     if ($rootScope.eliminati != undefined) {
       if ($rootScope.eliminati.length != 0) {
-        $rootScope.eliminati == undefined
+        $rootScope.eliminati = undefined;
         $window.location.reload();
-      }
-    }
+     }
+   }
+
+
   });
+
+
+
 
   //animazione loading
   $ionicLoading.show({
@@ -27,7 +35,7 @@ if ($scope.categorieMovimenti == undefined) {
 
 
   $scope.tabAttivo = 1;
-  $scope.movimenti = undefined
+  $scope.movimenti = undefined;
 
   $scope.id_utente = sharedProperties.getIdUtente();
   var entrateTot = 0;
@@ -66,18 +74,21 @@ getMovimenti(month,"","");
         giorno:giorno
       }
     }).success(function(data){
-      $ionicLoading.hide()
       if (data.movimenti != undefined){
         $scope.movimentiPresenti = true
         $scope.movimenti = data.movimenti;
         $scope.selezionaPeriodo($scope.tabAttivo);
       }else{
-        $scope.movimentiPresenti = false
+        $scope.movimentiPresenti = false;
       }
+
+      $ionicLoading.hide();
+
 
       // console.log($scope.movimenti);
     }).catch(function(error){
       console.log(error);
+      console.log($scope.movimenti);
     });
   }
 
@@ -114,6 +125,7 @@ getMovimenti(month,"","");
     // Instantiate and draw our chart, passing in some options.
     var chart = new google.visualization.PieChart(document.getElementById('categorie_chart_div'));
     chart.draw(data, options);
+
   }
 
 
@@ -433,13 +445,28 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
        });
    };
 
+   //Modal view
+
+   $scope.closeModal = function() {
+     $scope.modalView.hide();
+     $scope.modal.totale = null;
+
+   };
+
+
+
+
+
+
      $scope.showModal = function() {
+
        $ionicModal.fromTemplateUrl('templates/addmovimenti.html', {
-         scope: $scope
+         scope: $scope,
+
        }).then(function(modal) {
 
          $scope.modalView = modal;
-         var data = new Date();
+         var data = new Date ();
          $scope.modal.data = data;
          $scope.modal.dataSecondi = data.getTime();
          $scope.modal.tabTipoAttivo = 1;
@@ -447,13 +474,17 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
          $scope.modal.cat.tipo = "Categoria"
          $scope.modal.nome = "";
          $scope.modalView.show();
+
+
+
        });
+
+
      };
 
-      $scope.closeModal = function() {
-        $scope.modalView.hide();
-        $scope.modal.totale = null;
-      };
+
+
+
 
 
      $scope.selezionaTipo=function(tab){
@@ -464,7 +495,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
      $scope.showCategories = function(){
        catPopup = $ionicPopup.show({
-          templateUrl: "/templates/categoriePopup.html",
+          templateUrl: "templates/categoriePopup.html",
           cssClass: 'categorie-popup',
           title: $scope.modal.cat,
           scope: $scope,
@@ -509,11 +540,16 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
      //Funzione per ottenere i tipi
       function insertMovimento(tabella,data,importo,nome,id_tipo,id_utente){
         var link = "http://moneytrack.altervista.org/insert.php";
+
+        var key = $rootScope.key;
+        var encryptedN = CryptoJS.AES.encrypt(nome, key, {}).toString();
+
+
         var fd = new FormData();
         fd.append("tabella", tabella);
         fd.append("data", data)
         fd.append("importo", importo);
-        fd.append("nome", nome);
+        fd.append("nome", encryptedN);
         fd.append("id_tipo", id_tipo);
         fd.append("id_utente", id_utente);
 

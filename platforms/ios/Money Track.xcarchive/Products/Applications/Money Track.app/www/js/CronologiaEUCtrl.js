@@ -26,6 +26,11 @@ angular.module('starter.controllers')
   }).then(function(response){
     if (response.data.movimenti != undefined) {
       $scope.movimenti = response.data.movimenti;
+      var key = $rootScope.key;
+      for (var i = 0; i < $scope.movimenti.length; i++) {
+        var decrypted = CryptoJS.AES.decrypt($scope.movimenti[i].nome,key).toString(CryptoJS.enc.Utf8);
+        $scope.movimenti[i].nome = decrypted;
+      }
       getLongData();
       $scope.trovato = true
     }else{
@@ -64,7 +69,7 @@ angular.module('starter.controllers')
   $scope.showMenu = function(id,tabella) {
 
     catPopup = $ionicPopup.show({
-       templateUrl: "/templates/eliminaPopup.html",
+       templateUrl: "templates/eliminaPopup.html",
        cssClass: 'categorie-popup',
        title: "",
        scope: $scope,
@@ -77,7 +82,7 @@ angular.module('starter.controllers')
           var link = "http://moneytrack.altervista.org/delete.php";
           var fd = new FormData();
           fd.append("tabella", tabella);
-          fd.append("id_uscita", id);
+          fd.append("id_entrata", id);
 
 
           $http.post(link, fd, {

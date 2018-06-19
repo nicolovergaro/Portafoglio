@@ -27,6 +27,11 @@ $scope.id_utente = sharedProperties.getIdUtente();
   }).then(function(response){
     if (response.data.uscite != undefined) {
       $scope.uscite = response.data.uscite;
+      var key = $rootScope.key;
+      for (var i = 0; i < $scope.uscite.length; i++) {
+        var decrypted = CryptoJS.AES.decrypt($scope.uscite[i].nome,key).toString(CryptoJS.enc.Utf8);
+        $scope.uscite[i].nome = decrypted;
+      }
       getLongData();
       $scope.trovato = true
     }else{
@@ -67,7 +72,7 @@ $scope.id_utente = sharedProperties.getIdUtente();
   $scope.showMenu = function(id) {
 
     catPopup = $ionicPopup.show({
-       templateUrl: "/templates/eliminaPopup.html",
+       templateUrl: "templates/eliminaPopup.html",
        cssClass: 'categorie-popup',
        title: "",
        scope: $scope,

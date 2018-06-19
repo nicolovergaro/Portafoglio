@@ -3,16 +3,18 @@ angular.module('starter.controllers')
 .controller('ProfiloCtrl', function($scope, $ionicPopup,$ionicPlatform, $ionicLoading,$rootScope, $window, $ionicHistory, $http, sharedProperties, $ionicModal, ionicDatePicker, ionicTimePicker) {
 
   $scope.$on('$ionicView.beforeEnter', function (event, viewData) {
-
+    console.log($rootScope.eliminati);
 
 
     viewData.enableBack = false;
     if ($rootScope.eliminati != undefined) {
       if ($rootScope.eliminati.length != 0) {
-        $rootScope.eliminati == undefined
+        $rootScope.eliminati = undefined;
         $window.location.reload();
-      }
-    }
+     }
+   }
+
+
   });
 
 
@@ -33,7 +35,7 @@ if ($scope.categorieMovimenti == undefined) {
 
 
   $scope.tabAttivo = 1;
-  $scope.movimenti = undefined
+  $scope.movimenti = undefined;
 
   $scope.id_utente = sharedProperties.getIdUtente();
   var entrateTot = 0;
@@ -72,18 +74,21 @@ getMovimenti(month,"","");
         giorno:giorno
       }
     }).success(function(data){
-      $ionicLoading.hide()
       if (data.movimenti != undefined){
         $scope.movimentiPresenti = true
         $scope.movimenti = data.movimenti;
         $scope.selezionaPeriodo($scope.tabAttivo);
       }else{
-        $scope.movimentiPresenti = false
+        $scope.movimentiPresenti = false;
       }
+
+      $ionicLoading.hide();
+
 
       // console.log($scope.movimenti);
     }).catch(function(error){
       console.log(error);
+      console.log($scope.movimenti);
     });
   }
 
@@ -120,6 +125,7 @@ getMovimenti(month,"","");
     // Instantiate and draw our chart, passing in some options.
     var chart = new google.visualization.PieChart(document.getElementById('categorie_chart_div'));
     chart.draw(data, options);
+
   }
 
 
@@ -458,7 +464,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
          scope: $scope,
 
        }).then(function(modal) {
-         console.log($scope.aperto);
+
          $scope.modalView = modal;
          var data = new Date ();
          $scope.modal.data = data;
@@ -489,7 +495,7 @@ if ($scope.utente != null && $scope.movimentiPresenti) {
 
      $scope.showCategories = function(){
        catPopup = $ionicPopup.show({
-          templateUrl: "/templates/categoriePopup.html",
+          templateUrl: "templates/categoriePopup.html",
           cssClass: 'categorie-popup',
           title: $scope.modal.cat,
           scope: $scope,
