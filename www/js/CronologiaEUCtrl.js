@@ -66,7 +66,7 @@ angular.module('starter.controllers')
     }
   }
 
-  $scope.showMenu = function(id,tabella) {
+  $scope.showMenu = function(id,isEntrata) {
 
     catPopup = $ionicPopup.show({
        templateUrl: "templates/eliminaPopup.html",
@@ -81,8 +81,14 @@ angular.module('starter.controllers')
 
           var link = "http://moneytrack.altervista.org/delete.php";
           var fd = new FormData();
-          fd.append("tabella", tabella);
-          fd.append("id_entrata", id);
+          if (isEntrata) {
+            fd.append("tabella", 'entrate');
+            fd.append("id_entrata", id);
+          }else{
+            fd.append("tabella", 'uscite');
+            fd.append("id_uscita", id);
+          }
+
 
 
           $http.post(link, fd, {
